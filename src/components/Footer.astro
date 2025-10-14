@@ -1,5 +1,5 @@
 ---
-// 页脚组件
+// 页脚组件 - 使用 daisyUI footer
 const currentYear = new Date().getFullYear();
 
 const footerLinks = {
@@ -24,101 +24,66 @@ const footerLinks = {
 };
 ---
 
-<footer class="bg-gray-900 text-gray-300">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-    <!-- Main Footer Content -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
-      <!-- Company Info -->
-      <div class="space-y-4">
-        <div class="flex items-center space-x-2">
-          <svg class="w-8 h-8 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
-          </svg>
-          <span class="text-xl font-bold text-white">Training</span>
-        </div>
-        <p class="text-sm leading-6">
-          成为全球受信赖的学习平台，为每个人提供实现职业目标的工具和资源。
-        </p>
-        <div class="flex space-x-4">
-          <a href="#" class="hover:text-white transition-colors" aria-label="微信">
-            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M8.5 12.5a1 1 0 110-2 1 1 0 010 2zm7 0a1 1 0 110-2 1 1 0 010 2zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"></path>
-            </svg>
-          </a>
-          <a href="#" class="hover:text-white transition-colors" aria-label="微博">
-            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"></path>
-            </svg>
-          </a>
-          <a href="#" class="hover:text-white transition-colors" aria-label="领英">
-            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M19 3a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h14m-.5 15.5v-5.3a3.26 3.26 0 00-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 011.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 001.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 00-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"></path>
-            </svg>
-          </a>
-        </div>
-      </div>
-
-      <!-- Product Links -->
-      <div>
-        <h3 class="text-white font-semibold mb-4">产品服务</h3>
-        <ul class="space-y-3">
-          {footerLinks.product.map(link => (
-            <li>
-              <a href={link.href} class="text-sm hover:text-white transition-colors">
-                {link.name}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      <!-- Company Links -->
-      <div>
-        <h3 class="text-white font-semibold mb-4">公司信息</h3>
-        <ul class="space-y-3">
-          {footerLinks.company.map(link => (
-            <li>
-              <a href={link.href} class="text-sm hover:text-white transition-colors">
-                {link.name}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      <!-- Resources Links -->
-      <div>
-        <h3 class="text-white font-semibold mb-4">支持与帮助</h3>
-        <ul class="space-y-3">
-          {footerLinks.resources.map(link => (
-            <li>
-              <a href={link.href} class="text-sm hover:text-white transition-colors">
-                {link.name}
-              </a>
-            </li>
-          ))}
-        </ul>
-        <div class="mt-6">
-          <p class="text-sm font-semibold text-white mb-2">联系电话</p>
-          <a href="tel:000-000-0000" class="text-sm hover:text-white transition-colors">
-            000-000-0000
-          </a>
-        </div>
-      </div>
+<footer class="footer footer-vertical sm:footer-horizontal bg-neutral text-neutral-content p-10">
+  <nav>
+    <div class="flex items-center gap-2 mb-4">
+      <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+      </svg>
+      <span class="text-xl font-bold">Training</span>
     </div>
-
-    <!-- Bottom Bar -->
-    <div class="pt-8 border-t border-gray-800">
-      <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-        <p class="text-sm text-gray-400">
-          © {currentYear} Training. 保留所有权利。
-        </p>
-        <div class="flex space-x-6 text-sm text-gray-400">
-          <a href="/privacy" class="hover:text-white transition-colors">隐私政策</a>
-          <a href="/terms" class="hover:text-white transition-colors">服务条款</a>
-          <a href="/sitemap" class="hover:text-white transition-colors">网站地图</a>
-        </div>
-      </div>
+    <p class="max-w-xs text-sm opacity-80">
+      成为全球受信赖的学习平台，为每个人提供实现职业目标的工具和资源。
+    </p>
+    <div class="flex gap-4 mt-4">
+      <a href="#" class="link link-hover" aria-label="微信">
+        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M8.5 12.5a1 1 0 110-2 1 1 0 010 2zm7 0a1 1 0 110-2 1 1 0 010 2zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"></path>
+        </svg>
+      </a>
+      <a href="#" class="link link-hover" aria-label="微博">
+        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"></path>
+        </svg>
+      </a>
+      <a href="#" class="link link-hover" aria-label="领英">
+        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M19 3a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h14m-.5 15.5v-5.3a3.26 3.26 0 00-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 011.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 001.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 00-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"></path>
+        </svg>
+      </a>
     </div>
-  </div>
+  </nav>
+  <nav>
+    <h6 class="footer-title">产品服务</h6>
+    {footerLinks.product.map(link => (
+      <a href={link.href} class="link link-hover">{link.name}</a>
+    ))}
+  </nav>
+  <nav>
+    <h6 class="footer-title">公司信息</h6>
+    {footerLinks.company.map(link => (
+      <a href={link.href} class="link link-hover">{link.name}</a>
+    ))}
+  </nav>
+  <nav>
+    <h6 class="footer-title">支持与帮助</h6>
+    {footerLinks.resources.map(link => (
+      <a href={link.href} class="link link-hover">{link.name}</a>
+    ))}
+    <div class="mt-4">
+      <p class="font-semibold mb-2">联系电话</p>
+      <a href="tel:000-000-0000" class="link link-hover">000-000-0000</a>
+    </div>
+  </nav>
+</footer>
+
+<footer class="footer footer-center bg-neutral text-neutral-content border-t border-base-300 p-4">
+  <aside>
+    <p class="text-sm opacity-80">© {currentYear} Training. 保留所有权利。</p>
+  </aside>
+  <nav class="flex gap-4 text-sm opacity-80">
+    <a href="/privacy" class="link link-hover">隐私政策</a>
+    <a href="/terms" class="link link-hover">服务条款</a>
+    <a href="/sitemap" class="link link-hover">网站地图</a>
+  </nav>
 </footer>
