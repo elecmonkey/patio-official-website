@@ -1,0 +1,45 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="成功案例 - Training">
+  <section class="bg-gray-50 py-20 md:py-32">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-6">
+          成功案例
+        </h1>
+        <p class="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
+          见证学习者的成长与成就
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        {[1, 2, 3, 4].map(item => (
+          <div class="bg-white border border-gray-200 p-8">
+            <div class="flex items-start mb-4">
+              <div class="w-16 h-16 bg-gray-200 mr-4"></div>
+              <div>
+                <h3 class="text-xl font-bold text-gray-900">客户名称 {item}</h3>
+                <p class="text-sm text-gray-500">行业类型</p>
+              </div>
+            </div>
+            <p class="text-gray-600 leading-relaxed mb-4">
+              通过使用我们的学习平台，该客户在短时间内实现了团队技能的显著提升，员工满意度和工作效率都有了明显改善。
+            </p>
+            <div class="flex space-x-8 text-sm">
+              <div>
+                <div class="text-2xl font-bold text-blue-600">85%</div>
+                <div class="text-gray-500">技能提升</div>
+              </div>
+              <div>
+                <div class="text-2xl font-bold text-blue-600">90%</div>
+                <div class="text-gray-500">满意度</div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>
