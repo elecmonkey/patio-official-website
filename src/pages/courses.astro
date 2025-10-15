@@ -75,16 +75,18 @@ const stats = [
 
   <!-- Stats Bar -->
   <section class="bg-primary py-8">
-    <div class="stats stats-horizontal shadow-none bg-transparent w-full max-w-7xl mx-auto grid grid-cols-2 lg:grid-cols-4">
-      {stats.map((stat, index) => (
-        <div
-          class={`stat place-items-center text-primary-content ${index < stats.length - 1 ? 'border-r border-primary-content/20' : ''}`}
-          style={`animation: slideInFromLeft 0.5s ease-out ${0.1 * index}s both`}
-        >
-          <div class="stat-value text-2xl sm:text-3xl md:text-4xl">{stat.number}</div>
-          <div class="stat-desc text-primary-content/80 text-xs sm:text-sm">{stat.label}</div>
-        </div>
-      ))}
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-0">
+        {stats.map((stat, index) => (
+          <div
+            class={`flex flex-col items-center justify-center text-primary-content py-6 ${index < stats.length - 1 ? 'lg:border-r lg:border-primary-content/20' : ''}`}
+            style={`animation: slideInFromLeft 0.5s ease-out ${0.1 * index}s both`}
+          >
+            <div class="text-2xl sm:text-3xl md:text-4xl font-bold mb-2">{stat.number}</div>
+            <div class="text-primary-content/80 text-xs sm:text-sm text-center">{stat.label}</div>
+          </div>
+        ))}
+      </div>
     </div>
   </section>
 
