@@ -1,93 +1,74 @@
 ---
-// 页脚组件 - 使用 daisyUI footer
+// 页脚组件 - 模仿微软布局风格
 const currentYear = new Date().getFullYear();
 
-const footerLinks = {
-  product: [
-    { name: '探索课程', href: '/courses' },
-    { name: '解决方案', href: '/solutions' },
-    { name: '成功案例', href: '/cases' },
-    { name: '企业培训', href: '/enterprise' }
-  ],
-  company: [
-    { name: '关于我们', href: '/about' },
-    { name: '新闻动态', href: '/news' },
-    { name: '加入我们', href: '/careers' },
-    { name: '联系我们', href: '/contact' }
-  ],
-  resources: [
-    { name: '帮助中心', href: '/help' },
-    { name: '隐私政策', href: '/privacy' },
-    { name: '服务条款', href: '/terms' },
-    { name: '认证体系', href: '/certification' }
-  ]
-};
+const footerColumns = [
+  {
+    title: '学习资源',
+    links: [
+      { name: '探索课程', href: '/courses' },
+      { name: '解决方案', href: '/solutions' },
+      { name: '成功案例', href: '/cases' },
+      { name: '认证体系', href: '/certification' },
+      { name: '企业培训', href: '/enterprise' }
+    ]
+  },
+  {
+    title: '关于我们',
+    links: [
+      { name: '公司简介', href: '/about' },
+      { name: '新闻动态', href: '/news' },
+      { name: '加入我们', href: '/careers' },
+      { name: '联系我们', href: '/contact' }
+    ]
+  },
+  {
+    title: '帮助支持',
+    links: [
+      { name: '帮助中心', href: '/help' },
+      { name: '常见问题', href: '/faq' },
+      { name: '在线客服', href: '/support' },
+      { name: '意见反馈', href: '/feedback' }
+    ]
+  }
+];
 ---
 
-<footer class="footer footer-vertical sm:footer-horizontal bg-neutral text-neutral-content p-10">
-  <div class="max-w-7xl mx-auto w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-    <nav>
-      <div class="flex items-center gap-2 mb-4">
-        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
-        </svg>
-        <span class="text-xl font-bold">Training</span>
-      </div>
-      <p class="max-w-xs text-sm opacity-80">
-        成为全球受信赖的学习平台，为每个人提供实现职业目标的工具和资源。
-      </p>
-      <div class="flex gap-4 mt-4">
-        <a href="#" class="link link-hover" aria-label="微信">
-          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M8.5 12.5a1 1 0 110-2 1 1 0 010 2zm7 0a1 1 0 110-2 1 1 0 010 2zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"></path>
-          </svg>
-        </a>
-        <a href="#" class="link link-hover" aria-label="微博">
-          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"></path>
-          </svg>
-        </a>
-        <a href="#" class="link link-hover" aria-label="领英">
-          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M19 3a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h14m-.5 15.5v-5.3a3.26 3.26 0 00-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 011.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 001.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 00-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"></path>
-          </svg>
-        </a>
-      </div>
-    </nav>
-    <nav>
-      <h6 class="footer-title">产品服务</h6>
-      {footerLinks.product.map(link => (
-        <a href={link.href} class="link link-hover">{link.name}</a>
+<!-- 主要页脚区域 -->
+<footer class="bg-base-200 text-base-content">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-8 md:gap-12">
+      {footerColumns.map((column) => (
+        <nav>
+          <h6 class="font-semibold text-sm mb-4">{column.title}</h6>
+          <ul class="space-y-3">
+            {column.links.map((link) => (
+              <li>
+                <a href={link.href} class="text-sm opacity-70 hover:opacity-100 hover:underline transition-opacity">
+                  {link.name}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
       ))}
-    </nav>
-    <nav>
-      <h6 class="footer-title">公司信息</h6>
-      {footerLinks.company.map(link => (
-        <a href={link.href} class="link link-hover">{link.name}</a>
-      ))}
-    </nav>
-    <nav>
-      <h6 class="footer-title">支持与帮助</h6>
-      {footerLinks.resources.map(link => (
-        <a href={link.href} class="link link-hover">{link.name}</a>
-      ))}
-      <div class="mt-4">
-        <p class="font-semibold mb-2">联系电话</p>
-        <a href="tel:000-000-0000" class="link link-hover">000-000-0000</a>
-      </div>
-    </nav>
+    </div>
   </div>
 </footer>
 
-<footer class="footer footer-center bg-neutral text-neutral-content border-t border-base-300 p-4">
-  <div class="max-w-7xl mx-auto w-full">
-    <aside>
-      <p class="text-sm opacity-80">© {currentYear} Training. 保留所有权利。</p>
-    </aside>
-    <nav class="flex gap-4 text-sm opacity-80">
-      <a href="/privacy" class="link link-hover">隐私政策</a>
-      <a href="/terms" class="link link-hover">服务条款</a>
-      <a href="/sitemap" class="link link-hover">网站地图</a>
-    </nav>
+<!-- 底部版权区域 -->
+<footer class="bg-base-200 text-base-content border-t border-base-300">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+    <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+      <div class="flex items-center gap-6 text-xs opacity-60">
+        <a href="/privacy" class="hover:underline">隐私声明</a>
+        <a href="/terms" class="hover:underline">使用条款</a>
+        <a href="/sitemap" class="hover:underline">网站地图</a>
+        <a href="tel:000-000-0000" class="hover:underline">联系我们</a>
+      </div>
+      <div class="text-xs opacity-60">
+        © {currentYear} Training. 保留所有权利。
+      </div>
+    </div>
   </div>
 </footer>
