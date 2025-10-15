@@ -1,5 +1,5 @@
 import { navigate } from 'astro:transitions/client';
-import { languages } from '../i18n/ui';
+import { languages } from '@/i18n/ui';
 
 interface LanguageSwitcherProps {
   currentLang: keyof typeof languages;
