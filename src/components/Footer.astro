@@ -1,34 +1,40 @@
 ---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import { getRelativeLocaleUrl } from 'astro:i18n';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
 // 页脚组件 - 模仿微软布局风格
 const currentYear = new Date().getFullYear();
 
 const footerColumns = [
   {
-    title: '学习资源',
+    title: t('footer.learning'),
     links: [
-      { name: '探索课程', href: '/courses' },
-      { name: '解决方案', href: '/solutions' },
-      { name: '成功案例', href: '/cases' },
-      { name: '认证体系', href: '/certification' },
-      { name: '企业培训', href: '/enterprise' }
+      { name: t('footer.courses'), href: getRelativeLocaleUrl(lang, 'courses') },
+      { name: t('footer.solutions'), href: getRelativeLocaleUrl(lang, 'solutions') },
+      { name: t('footer.cases'), href: getRelativeLocaleUrl(lang, 'cases') },
+      { name: t('footer.certification'), href: getRelativeLocaleUrl(lang, 'certification') },
+      { name: t('footer.enterprise'), href: getRelativeLocaleUrl(lang, 'enterprise') }
     ]
   },
   {
-    title: '关于我们',
+    title: t('footer.about'),
     links: [
-      { name: '公司简介', href: '/about' },
-      { name: '新闻动态', href: '/news' },
-      { name: '加入我们', href: '/careers' },
-      { name: '联系我们', href: '/contact' }
+      { name: t('footer.company'), href: getRelativeLocaleUrl(lang, 'about') },
+      { name: t('footer.news'), href: getRelativeLocaleUrl(lang, 'news') },
+      { name: t('footer.careers'), href: getRelativeLocaleUrl(lang, 'careers') },
+      { name: t('footer.contactUs'), href: getRelativeLocaleUrl(lang, 'contact') }
     ]
   },
   {
-    title: '帮助支持',
+    title: t('footer.supportTitle'),
     links: [
-      { name: '帮助中心', href: '/help' },
-      { name: '常见问题', href: '/faq' },
-      { name: '在线客服', href: '/support' },
-      { name: '意见反馈', href: '/feedback' }
+      { name: t('footer.help'), href: getRelativeLocaleUrl(lang, 'help') },
+      { name: t('footer.faq'), href: getRelativeLocaleUrl(lang, 'faq') },
+      { name: t('footer.support'), href: getRelativeLocaleUrl(lang, 'support') },
+      { name: t('footer.feedback'), href: getRelativeLocaleUrl(lang, 'feedback') }
     ]
   }
 ];
@@ -61,13 +67,13 @@ const footerColumns = [
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
     <div class="flex flex-col md:flex-row justify-between items-center gap-4">
       <div class="flex items-center gap-6 text-xs opacity-60">
-        <a href="/privacy" class="hover:underline">隐私声明</a>
-        <a href="/terms" class="hover:underline">使用条款</a>
-        <a href="/sitemap" class="hover:underline">网站地图</a>
-        <a href="tel:000-000-0000" class="hover:underline">联系我们</a>
+        <a href={getRelativeLocaleUrl(lang, 'privacy')} class="hover:underline">{t('footer.privacy')}</a>
+        <a href={getRelativeLocaleUrl(lang, 'terms')} class="hover:underline">{t('footer.terms')}</a>
+        <a href={getRelativeLocaleUrl(lang, 'sitemap')} class="hover:underline">{t('footer.sitemap')}</a>
+        <a href="tel:000-000-0000" class="hover:underline">{t('footer.contactPhone')}</a>
       </div>
       <div class="text-xs opacity-60">
-        © {currentYear} Training. 保留所有权利。
+        © {currentYear} Training. {t('footer.copyright')}
       </div>
     </div>
   </div>
