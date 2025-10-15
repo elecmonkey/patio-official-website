@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import CourseTabs from '../components/CourseTabs';
 
 // 课程分类标签
 const categories = [
@@ -8,6 +9,8 @@ const categories = [
   '运营数据',
   '市场营销与销售'
 ];
+
+const certificationTabs = ['行动智能开发', '数据科学与分析', '网络和设计', '营销与销售'];
 
 // 体系课程数据
 const systemCourses = [
@@ -99,48 +102,9 @@ const stats = [
         </h2>
       </div>
 
-      <!-- Category Tabs -->
-      <div role="tablist" class="tabs tabs-border justify-center mb-12" style="animation: slideInFromLeft 0.6s ease-out 0.2s both">
-        {categories.map((category, index) => (
-          <button
-            role="tab"
-            class={`tab ${index === 0 ? 'tab-active' : ''}`}
-          >
-            {category}
-          </button>
-        ))}
-      </div>
-
-      <!-- Course Cards Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-        {systemCourses.map((course, index) => (
-          <div
-            class="card card-border bg-base-100 overflow-hidden hover:shadow-xl transition-shadow"
-            style={`animation: slideInFromLeft 0.6s ease-out ${0.3 + index * 0.15}s both`}
-          >
-            <!-- Course Image/Pattern -->
-            <div class={`${course.bgColor} h-48 sm:h-56 relative overflow-hidden flex items-center justify-center p-6`}>
-              <div class="text-center">
-                <div class="badge badge-ghost bg-base-100 text-base-content mb-4">
-                  {course.tag}
-                </div>
-                <h3 class="text-xl sm:text-2xl font-bold text-primary-content leading-tight">
-                  {course.title}
-                </h3>
-              </div>
-            </div>
-
-            <!-- Course Info -->
-            <div class="card-body">
-              <h4 class="card-title text-base sm:text-lg">
-                {course.subtitle}
-              </h4>
-              <p class="text-sm opacity-70">
-                {course.instructor}
-              </p>
-            </div>
-          </div>
-        ))}
+      <!-- Category Tabs with Course Cards -->
+      <div style="animation: slideInFromLeft 0.6s ease-out 0.2s both">
+        <CourseTabs tabs={categories} courses={systemCourses} type="system" client:load />
       </div>
     </div>
   </section>
@@ -154,53 +118,9 @@ const stats = [
         </h2>
       </div>
 
-      <!-- Certification Tabs -->
-      <div role="tablist" class="tabs tabs-border justify-center mb-12" style="animation: slideInFromLeft 0.6s ease-out 0.2s both">
-        {['行动智能开发', '数据科学与分析', '网络和设计', '营销与销售'].map((tab, index) => (
-          <button
-            role="tab"
-            class={`tab ${index === 0 ? 'tab-active' : ''}`}
-          >
-            {tab}
-          </button>
-        ))}
-      </div>
-
-      <!-- Certification Cards Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-        {certificationCourses.map((course, index) => (
-          <div
-            class="card card-border bg-base-100 overflow-hidden hover:shadow-xl transition-shadow"
-            style={`animation: slideInFromLeft 0.6s ease-out ${0.3 + index * 0.15}s both`}
-          >
-            <!-- Course Image -->
-            <div class="bg-neutral h-48 sm:h-56 relative overflow-hidden flex items-center justify-center p-6">
-              <div class="absolute inset-0 opacity-10">
-                {[...Array(20)].map((_, i) => (
-                  <div
-                    class="absolute w-1 h-1 bg-neutral-content"
-                    style={`top: ${Math.random() * 100}%; left: ${Math.random() * 100}%`}
-                  />
-                ))}
-              </div>
-              <div class="text-center relative z-10">
-                <div class="badge badge-ghost bg-base-100 text-base-content mb-4">
-                  {course.tag}
-                </div>
-                <h3 class="text-xl sm:text-2xl font-bold text-neutral-content leading-tight">
-                  {course.title}
-                </h3>
-              </div>
-            </div>
-
-            <!-- Course Info -->
-            <div class="card-body">
-              <p class="text-sm text-center opacity-70">
-                {course.description}
-              </p>
-            </div>
-          </div>
-        ))}
+      <!-- Certification Tabs with Course Cards -->
+      <div style="animation: slideInFromLeft 0.6s ease-out 0.2s both">
+        <CourseTabs tabs={certificationTabs} courses={certificationCourses} type="certification" client:load />
       </div>
     </div>
   </section>
