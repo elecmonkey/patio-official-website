@@ -16,24 +16,21 @@ const systemCourses = [
     title: '产品经理入门课',
     subtitle: '产品经理入门课',
     instructor: '课程讲师：共6位专 讲1对8讲12节',
-    bgColor: 'bg-blue-600',
-    pattern: 'geometric-blue'
+    bgColor: 'bg-primary'
   },
   {
     tag: '体系课程',
     title: '文员转型产品经理之路',
     subtitle: '行政文员转型产品经理之路',
     instructor: '课程讲师：共2位 讲1对8讲10节',
-    bgColor: 'bg-orange-500',
-    pattern: 'geometric-orange'
+    bgColor: 'bg-warning'
   },
   {
     tag: '体系课程',
     title: '程序员转型产品经理之路',
     subtitle: '程序员转型产品经理之路',
     instructor: '课程讲师：共2位 讲1对8讲5节',
-    bgColor: 'bg-blue-900',
-    pattern: 'geometric-dark'
+    bgColor: 'bg-neutral'
   }
 ];
 
@@ -42,84 +39,70 @@ const certificationCourses = [
   {
     tag: '认证课程',
     title: 'Cisco认证课程',
-    subtitle: 'Cisco认证课程',
-    description: '网络工程师认证全方位入门认证',
-    bgColor: 'bg-blue-900',
-    bgGradient: 'from-blue-900 to-blue-700'
+    description: '网络工程师认证全方位入门认证'
   },
   {
     tag: '认证课程',
     title: 'Microsoft认证课程',
-    subtitle: 'Microsoft认证课程',
-    description: '包含系统管理、开发、数据库管理等多个方面的认证课程',
-    bgColor: 'bg-blue-900',
-    bgGradient: 'from-blue-900 to-blue-700'
+    description: '包含系统管理、开发、数据库管理等多个方面的认证课程'
   },
   {
     tag: '认证课程',
     title: 'CompTIA认证课程',
-    subtitle: 'CompTIA认证课程',
-    description: '提供基础IT认证课程',
-    bgColor: 'bg-blue-900',
-    bgGradient: 'from-blue-900 to-blue-700'
+    description: '提供基础IT认证课程'
   }
+];
+
+const stats = [
+  { number: '3,000+', label: '门课程' },
+  { number: '70+', label: '专家讲师' },
+  { number: '50+', label: '每月新增课程' },
+  { number: '20+', label: '认证课程覆盖领域' }
 ];
 ---
 
 <Layout title="探索课程 - Training">
   <!-- Hero Section -->
-  <section class="bg-white py-12 md:py-16 border-b border-gray-200">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-8">
-        <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-          探索<span class="text-blue-600">新领域</span> 掌握<span class="text-blue-600">新技能</span>
+  <section class="hero bg-base-100 min-h-[30vh] border-b border-base-300">
+    <div class="hero-content text-center">
+      <div>
+        <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4" style="animation: slideInFromLeft 0.6s ease-out">
+          探索<span class="text-primary">新领域</span> 掌握<span class="text-primary">新技能</span>
         </h1>
       </div>
     </div>
   </section>
 
   <!-- Stats Bar -->
-  <section class="bg-blue-600 py-8">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
-        <div class="text-center">
-          <div class="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-1">3,000+</div>
-          <div class="text-xs sm:text-sm text-blue-100">门课程</div>
+  <section class="bg-primary py-8">
+    <div class="stats stats-horizontal shadow-none bg-transparent w-full max-w-7xl mx-auto grid grid-cols-2 lg:grid-cols-4">
+      {stats.map((stat, index) => (
+        <div
+          class={`stat place-items-center text-primary-content ${index < stats.length - 1 ? 'border-r border-primary-content/20' : ''}`}
+          style={`animation: slideInFromLeft 0.5s ease-out ${0.1 * index}s both`}
+        >
+          <div class="stat-value text-2xl sm:text-3xl md:text-4xl">{stat.number}</div>
+          <div class="stat-desc text-primary-content/80 text-xs sm:text-sm">{stat.label}</div>
         </div>
-        <div class="text-center">
-          <div class="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-1">70+</div>
-          <div class="text-xs sm:text-sm text-blue-100">专家讲师</div>
-        </div>
-        <div class="text-center">
-          <div class="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-1">50+</div>
-          <div class="text-xs sm:text-sm text-blue-100">每月新增课程</div>
-        </div>
-        <div class="text-center">
-          <div class="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-1">20+</div>
-          <div class="text-xs sm:text-sm text-blue-100">认证课程覆盖领域</div>
-        </div>
-      </div>
+      ))}
     </div>
   </section>
 
   <!-- System Courses Section -->
   <section class="py-16 md:py-24">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-12">
-        <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+      <div class="text-center mb-12" style="animation: slideInFromLeft 0.6s ease-out both">
+        <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
           了解我们核心欢迎的课程，为热门职业做好就业准备
         </h2>
       </div>
 
       <!-- Category Tabs -->
-      <div class="flex flex-wrap justify-center gap-4 mb-12 border-b border-gray-200 pb-4">
+      <div role="tablist" class="tabs tabs-border justify-center mb-12" style="animation: slideInFromLeft 0.6s ease-out 0.2s both">
         {categories.map((category, index) => (
           <button
-            class={`px-6 py-2 text-sm font-medium transition-colors ${
-              index === 0
-                ? 'text-blue-600 border-b-2 border-blue-600'
-                : 'text-gray-600 hover:text-gray-900'
-            }`}
+            role="tab"
+            class={`tab ${index === 0 ? 'tab-active' : ''}`}
           >
             {category}
           </button>
@@ -128,26 +111,29 @@ const certificationCourses = [
 
       <!-- Course Cards Grid -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-        {systemCourses.map((course) => (
-          <div class="bg-white border border-gray-200 overflow-hidden hover:shadow-xl transition-shadow">
+        {systemCourses.map((course, index) => (
+          <div
+            class="card card-border bg-base-100 overflow-hidden hover:shadow-xl transition-shadow"
+            style={`animation: slideInFromLeft 0.6s ease-out ${0.3 + index * 0.15}s both`}
+          >
             <!-- Course Image/Pattern -->
             <div class={`${course.bgColor} h-48 sm:h-56 relative overflow-hidden flex items-center justify-center p-6`}>
               <div class="text-center">
-                <div class="inline-block px-4 py-1 bg-white text-xs font-medium text-gray-900 mb-4">
+                <div class="badge badge-ghost bg-base-100 text-base-content mb-4">
                   {course.tag}
                 </div>
-                <h3 class="text-xl sm:text-2xl font-bold text-white leading-tight">
+                <h3 class="text-xl sm:text-2xl font-bold text-primary-content leading-tight">
                   {course.title}
                 </h3>
               </div>
             </div>
 
             <!-- Course Info -->
-            <div class="p-6">
-              <h4 class="font-bold text-gray-900 mb-3 text-base sm:text-lg">
+            <div class="card-body">
+              <h4 class="card-title text-base sm:text-lg">
                 {course.subtitle}
               </h4>
-              <p class="text-sm text-gray-600">
+              <p class="text-sm opacity-70">
                 {course.instructor}
               </p>
             </div>
@@ -158,23 +144,20 @@ const certificationCourses = [
   </section>
 
   <!-- Certification Courses Section -->
-  <section class="bg-gray-50 py-16 md:py-24">
+  <section class="bg-base-200 py-16 md:py-24">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-12">
-        <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+      <div class="text-center mb-12" style="animation: slideInFromLeft 0.6s ease-out both">
+        <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
           提升专业技能，获取行业认可
         </h2>
       </div>
 
       <!-- Certification Tabs -->
-      <div class="flex flex-wrap justify-center gap-4 mb-12 border-b border-gray-300 pb-4">
+      <div role="tablist" class="tabs tabs-border justify-center mb-12" style="animation: slideInFromLeft 0.6s ease-out 0.2s both">
         {['行动智能开发', '数据科学与分析', '网络和设计', '营销与销售'].map((tab, index) => (
           <button
-            class={`px-6 py-2 text-sm font-medium transition-colors ${
-              index === 0
-                ? 'text-blue-600 border-b-2 border-blue-600'
-                : 'text-gray-600 hover:text-gray-900'
-            }`}
+            role="tab"
+            class={`tab ${index === 0 ? 'tab-active' : ''}`}
           >
             {tab}
           </button>
@@ -183,32 +166,34 @@ const certificationCourses = [
 
       <!-- Certification Cards Grid -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-        {certificationCourses.map((course) => (
-          <div class="bg-white border border-gray-200 overflow-hidden hover:shadow-xl transition-shadow">
+        {certificationCourses.map((course, index) => (
+          <div
+            class="card card-border bg-base-100 overflow-hidden hover:shadow-xl transition-shadow"
+            style={`animation: slideInFromLeft 0.6s ease-out ${0.3 + index * 0.15}s both`}
+          >
             <!-- Course Image -->
-            <div class={`bg-gradient-to-br ${course.bgGradient} h-48 sm:h-56 relative overflow-hidden flex items-center justify-center p-6`}>
+            <div class="bg-neutral h-48 sm:h-56 relative overflow-hidden flex items-center justify-center p-6">
               <div class="absolute inset-0 opacity-10">
-                {/* Star pattern */}
                 {[...Array(20)].map((_, i) => (
                   <div
-                    class="absolute w-1 h-1 bg-white"
+                    class="absolute w-1 h-1 bg-neutral-content"
                     style={`top: ${Math.random() * 100}%; left: ${Math.random() * 100}%`}
                   />
                 ))}
               </div>
               <div class="text-center relative z-10">
-                <div class="inline-block px-4 py-1 bg-white text-xs font-medium text-gray-900 mb-4">
+                <div class="badge badge-ghost bg-base-100 text-base-content mb-4">
                   {course.tag}
                 </div>
-                <h3 class="text-xl sm:text-2xl font-bold text-white leading-tight">
+                <h3 class="text-xl sm:text-2xl font-bold text-neutral-content leading-tight">
                   {course.title}
                 </h3>
               </div>
             </div>
 
             <!-- Course Info -->
-            <div class="p-6">
-              <p class="text-sm text-gray-600 text-center">
+            <div class="card-body">
+              <p class="text-sm text-center opacity-70">
                 {course.description}
               </p>
             </div>
