@@ -118,45 +118,6 @@ const fallbackImage = companyGallery[0];
     </div>
   </section>
 
-  <section class="py-20 md:py-28">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-16" style="animation: slideInFromLeft 0.6s ease-out both">
-        <h2 class="text-3xl sm:text-4xl font-bold mb-4">{t('home.features.title')}</h2>
-        <p class="text-lg opacity-80">{t('home.features.subtitle')}</p>
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-        {features.map((feature, index) => (
-          <div class="card card-border bg-base-100" style={`animation: slideInFromLeft 0.6s ease-out ${0.1 * index}s both`}>
-            <div class="card-body gap-4">
-              <div class="w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center">
-                {feature.icon === 'mentors' ? (
-                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="1.8" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
-                  </svg>
-                ) : feature.icon === 'personalized' ? (
-                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="1.8" d="M12 6v6l4 2M5 12a7 7 0 0114 0 7 7 0 01-7 7H7l-2 3"></path>
-                  </svg>
-                ) : feature.icon === 'feedback' ? (
-                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="1.8" d="M21 12a9 9 0 11-5.62-8.32l-.38 2.14A7 7 0 1019 12h2z"></path>
-                    <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="1.8" d="M13 12l-2 2-1-1"></path>
-                  </svg>
-                ) : (
-                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="1.8" d="M4 7h16M4 12h16M4 17h9"></path>
-                  </svg>
-                )}
-              </div>
-              <h3 class="text-2xl font-semibold">{feature.title}</h3>
-              <p class="leading-relaxed opacity-80">{feature.description}</p>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
   <section class="bg-base-200 py-20 md:py-28">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16" style="animation: slideInFromLeft 0.6s ease-out both">
