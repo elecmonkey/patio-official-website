@@ -6,6 +6,7 @@ import xhsQR from '@/assets/xhs-qrcode.jpg';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+const brand = lang === 'en' ? 'Patio Academy' : '攀梯国际';
 
 const contactMethods = [
   {
@@ -29,7 +30,7 @@ const contactMethods = [
 ];
 ---
 
-<Layout title={`${t('nav.cta')} - Patio Education`}>
+<Layout title={`${t('nav.cta')} - ${brand}`}>
   <section class="bg-base-200 py-20 md:py-28">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6" style="animation: slideInFromLeft 0.6s ease-out both">
       <h1 class="text-4xl sm:text-5xl font-bold">{t('contact.hero.title')}</h1>

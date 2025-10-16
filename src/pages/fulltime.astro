@@ -5,6 +5,7 @@ import { getRelativeLocaleUrl } from 'astro:i18n';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+const brand = lang === 'en' ? 'Patio Academy' : '攀梯国际';
 
 const audience = t('home.fulltime.audience.items').split('｜');
 const advantages = t('fulltime.features.items').split('｜');
@@ -13,7 +14,7 @@ const timeline = t('fulltime.timeline.steps').split('｜');
 const support = t('fulltime.support.items').split('｜');
 ---
 
-<Layout title={`${t('nav.fulltime')} - Patio Education`}>
+<Layout title={`${t('nav.fulltime')} - ${brand}`}>
   <section class="bg-base-200 py-20 md:py-28">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6" style="animation: slideInFromLeft 0.6s ease-out both">
       <h1 class="text-4xl sm:text-5xl font-bold">{t('fulltime.hero.title')}</h1>

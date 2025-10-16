@@ -5,6 +5,7 @@ import { getRelativeLocaleUrl } from 'astro:i18n';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+const brand = lang === 'en' ? 'Patio Academy' : '攀梯国际';
 
 const categories = [
   {
@@ -48,7 +49,7 @@ const workflow = t('competitions.strategy.items').split('｜');
 const comboSuggestions = t('competitions.combo.items').split('｜');
 ---
 
-<Layout title={`${t('nav.competition')} - Patio Education`}>
+<Layout title={`${t('nav.competition')} - ${brand}`}>
   <section class="bg-base-200 py-20 md:py-28">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6" style="animation: slideInFromLeft 0.6s ease-out both">
       <h1 class="text-4xl sm:text-5xl font-bold">{t('competitions.hero.title')}</h1>

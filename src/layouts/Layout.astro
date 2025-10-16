@@ -10,13 +10,26 @@ interface Props {
 	description?: string;
 }
 
-const {
-	title = '攀梯教育 · 国际课程与竞赛规划',
-	description = '专注 A-Level、AP、IB、WACE 课程与国际竞赛辅导，提供个性化学习方案，助力学生冲刺世界名校。'
-} = Astro.props;
-
 const currentLang = getLangFromUrl(Astro.url);
 const htmlLang = currentLang === 'en' ? 'en' : 'zh-CN';
+
+const defaultMeta = {
+	'zh-cn': {
+		title: '攀梯国际 · 国际课程与竞赛规划',
+		description: '专注 A-Level、AP、IB、WACE 课程与国际竞赛辅导，提供个性化学习方案，助力学生冲刺世界名校。'
+	},
+	en: {
+		title: 'Patio Academy · International Curriculum & Competition Planning',
+		description: 'Personalized international curriculum paths, competition coaching, and admissions planning from Patio Academy.'
+	}
+} as const;
+
+const metaDefaults = defaultMeta[currentLang] ?? defaultMeta['zh-cn'];
+
+const {
+	title = metaDefaults.title,
+	description = metaDefaults.description
+} = Astro.props;
 ---
 
 <!doctype html>

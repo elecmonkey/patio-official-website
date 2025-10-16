@@ -4,6 +4,7 @@ import { getLangFromUrl, useTranslations } from '@/i18n/utils';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+const brand = lang === 'en' ? 'Patio Academy' : '攀梯国际';
 
 const storyPoints = t('about.story.points').split('｜');
 const metrics = t('about.metrics.items').split('｜');
@@ -74,7 +75,7 @@ const oxbridgeItems = t('about.oxbridge.items').split('｜');
 const processSteps = t('about.process.steps').split('｜');
 ---
 
-<Layout title={`${t('nav.about')} - Patio Education`}>
+<Layout title={`${t('nav.about')} - ${brand}`}>
   <section class="bg-base-200 py-20 md:py-32">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6" style="animation: slideInFromLeft 0.6s ease-out both">
       <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold">{t('about.hero.title')}</h1>

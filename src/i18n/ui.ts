@@ -8,7 +8,7 @@ export const defaultLang = 'zh-cn';
 export const ui = {
   'zh-cn': {
     // Navigation
-    'brand.name': '攀梯教育',
+    'brand.name': '攀梯国际',
     'nav.home': '首页',
     'nav.curriculum': '课程体系',
     'nav.competition': '国际竞赛',
@@ -52,7 +52,7 @@ export const ui = {
     'home.hero.primaryCta': '预约学习规划',
     'home.hero.secondaryCta': '获取课程手册',
 
-    'home.features.title': '攀梯教育的核心优势',
+    'home.features.title': '攀梯国际的核心优势',
     'home.features.subtitle': '用专业导师、个性化方案与高频反馈，打造高效进步的学习闭环。',
     'home.features.mentors.title': '导师团队',
     'home.features.mentors.desc': '团队超五成拥有教授背景，毕业于海外名校，为学生量身定制教学路径。',
@@ -112,7 +112,7 @@ export const ui = {
     'home.oxbridge.services.items': '笔试专项辅导（MAT、PAT、TSA、TMUA 等）｜一对一面试训练与模拟反馈｜G5 入学考试导读与独家资料库｜A-Level / IB 全科冲刺与背景提升',
     'home.oxbridge.cta': '预约牛剑备考顾问',
 
-    'home.about.title': '关于攀梯教育',
+    'home.about.title': '关于攀梯国际',
     'home.about.subtitle': '由海外归国硕博和教授创立，专注英语与学科能力提升，助力攀登名校之路。',
     'home.about.points': '海外教授导师团队｜10+ 年教学经验｜AP 5 分、A* 高分学员众多｜多项国际竞赛获奖案例',
     'home.about.carousel.captions': '沉浸式学习空间｜互动式小组教室｜温馨学员休憩区',
@@ -193,13 +193,13 @@ export const ui = {
 
     // Contact Page
     'contact.hero.title': '联系我们',
-    'contact.hero.subtitle': '欢迎通过以下方式与攀梯教育取得联系，获取课程咨询与升学规划支持。',
+    'contact.hero.subtitle': '欢迎通过以下方式与攀梯国际取得联系，获取课程咨询与升学规划支持。',
     'contact.info.phone': '咨询热线',
     'contact.info.wechat': '官方微信',
     'contact.info.xiaohongshu': '小红书',
     'contact.info.phoneValue': '000-000-0000',
     'contact.info.wechatValue': '攀梯国际教育',
-    'contact.info.xiaohongshuValue': '攀梯教育官方账号',
+    'contact.info.xiaohongshuValue': '攀梯国际官方账号',
 
     // About Page
 
@@ -249,11 +249,11 @@ export const ui = {
     'solutions.individual.feature3': '行业认证准备',
 
     // About Page
-    'about.hero.title': '关于攀梯教育',
+    'about.hero.title': '关于攀梯国际',
     'about.hero.subtitle': '聚焦国际课程、竞赛与升学规划的全链路教育伙伴。',
     'about.story.title': '我们的故事',
     'about.story.tagline': '全球视野 + 个性化路径',
-    'about.story.description': '攀梯教育（Patio Education）由多位拥有海外教育背景的硕博与教授共同创立，秉持“Pathway to Ivy League and Oxbridge”的愿景，为学生提供覆盖国际课程、竞赛、语言与升学辅导的全方位服务。团队深耕英国、美加、澳新及亚洲院校申请，打造出兼具科学方法与人文关怀的教学体系。',
+    'about.story.description': '攀梯国际（Patio Academy）由多位拥有海外教育背景的硕博与教授共同创立，秉持“Pathway to Ivy League and Oxbridge”的愿景，为学生提供覆盖国际课程、竞赛、语言与升学辅导的全方位服务。团队深耕英国、美加、澳新及亚洲院校申请，打造出兼具科学方法与人文关怀的教学体系。',
     'about.story.points': '海外硕博组成的教研团队｜涵盖 A-Level、AP、IB、WACE 等国际课程｜牛剑 / G5 / 香港高校笔面试体系化辅导',
     'about.metrics.title': '核心成果',
     'about.metrics.items': '10+ 年平均教学经验｜AP 5 分与 A* 高分学员众多｜成熟的牛剑 / G5 面试辅导体系｜多项国际竞赛获奖案例',
@@ -287,14 +287,14 @@ export const ui = {
   },
   en: {
     // Navigation
-    'brand.name': 'Patio Education',
+    'brand.name': 'Patio Academy',
     'nav.home': 'Home',
     'nav.curriculum': 'Programs',
     'nav.competition': 'Contests',
     'nav.fulltime': 'Full-Time',
     'nav.oxbridge': 'Oxbridge',
     'nav.about': 'About',
-    'nav.cta': 'Talk to Us',
+    'nav.cta': 'Contact Us',
     'nav.phone': '000-000-0000',
 
     // Footer
@@ -325,13 +325,13 @@ export const ui = {
     'footer.address.detail': 'No.300 Zhongshan East Road, Nanjing',
 
     // Home Page
-    'home.hero.title': 'Redefine international academic pathways',
-    'home.hero.titleHighlight': 'and accelerate admission to world-class universities',
+    'home.hero.title': 'Your International Academic Pathways',
+    'home.hero.titleHighlight': 'Toward World-Class Universities',
     'home.hero.subtitle': 'Personalized learning plans crafted for every student. We integrate courses, competitions, and interview coaching to guide learners toward their dream schools.',
     'home.hero.primaryCta': 'Book a Planning Session',
     'home.hero.secondaryCta': 'Download Program Guide',
 
-    'home.features.title': 'Why Patio Education',
+    'home.features.title': 'Why Patio Academy',
     'home.features.subtitle': 'A complete learning loop built on expert mentors, personalized plans, and rapid feedback.',
     'home.features.mentors.title': 'Expert Mentors',
     'home.features.mentors.desc': 'Over half of the team are professors or senior lecturers from overseas universities, delivering tailored academic roadmaps.',
@@ -391,9 +391,9 @@ export const ui = {
     'home.oxbridge.services.items': 'Exam coaching for MAT, PAT, TSA, TMUA, and more｜1-on-1 interview practice with expert feedback｜Exclusive guides for G5 admissions tests and materials｜A-Level/IB subject acceleration with profile enhancement',
     'home.oxbridge.cta': 'Talk to an Oxbridge Coach',
 
-    'home.about.title': 'About Patio Education',
+    'home.about.title': 'About Patio Academy',
     'home.about.subtitle': 'Founded by overseas PhDs and professors, delivering personalized English and academic training for elite admissions.',
-    'home.about.points': 'University professors as mentors｜10+ years of teaching experience｜AP 5s and A* achievers｜Multiple international competition winners',
+    'home.about.points': 'Professor mentors｜10+ years teaching｜AP 5 & A* results｜International competition wins',
     'home.about.carousel.captions': 'Immersive learning space｜Collaborative classroom｜Relaxed student lounge',
 
     'home.cta.title': 'Book Your Learning Plan Today',
@@ -472,13 +472,13 @@ export const ui = {
 
     // Contact Page
     'contact.hero.title': 'Contact Us',
-    'contact.hero.subtitle': 'Reach out to Patio Education for curriculum advice and admissions planning.',
+    'contact.hero.subtitle': 'Reach out to Patio Academy for curriculum advice and admissions planning.',
     'contact.info.phone': 'Hotline',
     'contact.info.wechat': 'WeChat',
     'contact.info.xiaohongshu': 'Xiaohongshu',
     'contact.info.phoneValue': '000-000-0000',
     'contact.info.wechatValue': 'PatioEdu',
-    'contact.info.xiaohongshuValue': 'Patio Education Official',
+    'contact.info.xiaohongshuValue': 'Patio Academy Official',
 
     // Courses Page
     'courses.hero.title': 'Explore',
@@ -526,11 +526,11 @@ export const ui = {
     'solutions.individual.feature3': 'Industry certification preparation',
 
     // About Page
-    'about.hero.title': 'About Patio Education',
+    'about.hero.title': 'About Patio Academy',
     'about.hero.subtitle': 'Your full-spectrum partner for international curricula, competitions, and admissions planning.',
     'about.story.title': 'Our Story',
     'about.story.tagline': 'Global Perspective + Personalized Pathways',
-    'about.story.description': 'Patio Education was founded by a collective of overseas PhDs and professors with a shared vision to create “Pathways to Ivy League and Oxbridge.” We deliver comprehensive support across academics, competitions, language, and applications for students pursuing studies in the UK, US, Canada, Australia, New Zealand, and Asia. Our teaching system blends data-driven methods with human-centered mentorship.',
+    'about.story.description': 'Patio Academy was founded by a collective of overseas PhDs and professors with a shared vision to create “Pathways to Ivy League and Oxbridge.” We deliver comprehensive support across academics, competitions, language, and applications for students pursuing studies in the UK, US, Canada, Australia, New Zealand, and Asia. Our teaching system blends data-driven methods with human-centered mentorship.',
     'about.story.points': 'Academic team formed by global postgraduates｜Coverage across A-Level, AP, IB, WACE and more｜Structured support for Oxbridge / G5 / Hong Kong interviews',
     'about.metrics.title': 'Key Milestones',
     'about.metrics.items': '10+ years of average teaching experience｜Consistent AP 5s and A* achievers｜Proven Oxbridge / G5 interview methodology｜Multiple international competition winners',
