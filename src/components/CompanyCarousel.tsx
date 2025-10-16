@@ -32,8 +32,8 @@ export default function CompanyCarousel({ images, autoPlayInterval = DEFAULT_INT
   };
 
   return (
-    <div className="relative w-full max-w-5xl mx-auto" aria-roledescription="carousel">
-      <div className="relative h-72 sm:h-96 overflow-hidden rounded-2xl shadow-xl">
+    <div className="relative w-full max-w-6xl mx-auto" aria-roledescription="carousel">
+      <div className="relative h-[26rem] sm:h-[34rem] lg:h-[38rem] overflow-hidden rounded-3xl shadow-2xl">
         {slides.map((slide, index) => (
           <figure
             key={slide.src}
