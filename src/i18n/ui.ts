@@ -202,7 +202,7 @@ export const ui = {
     'contact.info.xiaohongshu': '小红书',
     'contact.info.phoneValue': '000-000-0000',
     'contact.info.wechatValue': '攀梯国际教育',
-    'contact.info.xiaohongshuValue': '攀梯国际官方账号',
+    'contact.info.xiaohongshuValue': '攀梯国际教育',
 
     // About Page
 
