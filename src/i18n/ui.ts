@@ -254,6 +254,8 @@ export const ui = {
     // About Page
     'about.hero.title': '关于攀梯国际',
     'about.hero.subtitle': '聚焦国际课程、竞赛与升学规划的全链路教育伙伴。',
+    'about.gallery.title': '办公空间巡礼',
+    'about.gallery.subtitle': '现代化咨询工作区、会谈室与学员休憩区，呈现攀梯国际的日常节奏。',
     'about.story.title': '我们的故事',
     'about.story.tagline': '全球视野 + 个性化路径',
     'about.story.description': '攀梯国际（Patio Academy）由多位拥有海外教育背景的硕博与教授共同创立，秉持“Pathway to Ivy League and Oxbridge”的愿景，为学生提供覆盖国际课程、竞赛、语言与升学辅导的全方位服务。团队深耕英国、美加、澳新及亚洲院校申请，打造出兼具科学方法与人文关怀的教学体系。',
@@ -534,6 +536,8 @@ export const ui = {
     // About Page
     'about.hero.title': 'About Patio Academy',
     'about.hero.subtitle': 'Your full-spectrum partner for international curricula, competitions, and admissions planning.',
+    'about.gallery.title': 'Inside Our Office',
+    'about.gallery.subtitle': 'Explore our modern consultation areas, meeting rooms, and relaxed lounge spaces.',
     'about.story.title': 'Our Story',
     'about.story.tagline': 'Global Perspective + Personalized Pathways',
     'about.story.description': 'Patio Academy was founded by a collective of overseas PhDs and professors with a shared vision to create “Pathways to Ivy League and Oxbridge.” We deliver comprehensive support across academics, competitions, language, and applications for students pursuing studies in the UK, US, Canada, Australia, New Zealand, and Asia. Our teaching system blends data-driven methods with human-centered mentorship.',
