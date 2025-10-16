@@ -6,6 +6,7 @@ import CompanyCarousel from '@/components/CompanyCarousel';
 import picCompany1 from '@/assets/company/pic1.jpg';
 import picCompany2 from '@/assets/company/pic2.jpg';
 import picCompany3 from '@/assets/company/pic3.jpg';
+import worldMapGrid from '@/assets/world_map_grid.svg';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -91,8 +92,12 @@ const fallbackImage = companyGallery[0];
 ---
 
 <Layout>
-  <section class="hero bg-base-200 min-h-[60vh]">
-    <div class="hero-content text-center py-24">
+  <section class="hero relative min-h-[60vh] bg-base-200 overflow-hidden">
+    <div class="absolute inset-0">
+      <img src={worldMapGrid.src} alt="" class="w-full h-full object-cover mix-blend-multiply" style="filter: grayscale(100%) contrast(115%);" />
+      <div class="absolute inset-0 bg-gradient-to-b from-base-100/60 via-base-200/80 to-base-200"></div>
+    </div>
+    <div class="relative hero-content text-center py-24">
       <div class="max-w-4xl mx-auto space-y-8">
         <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight tracking-tight space-y-2" style="animation: slideInFromLeft 0.6s ease-out">
           <span class="block">{t('home.hero.title')}</span>
@@ -287,9 +292,6 @@ const fallbackImage = companyGallery[0];
           {fallbackImage && (
             <figure slot="fallback" class="relative w-full max-w-5xl mx-auto h-72 sm:h-96 overflow-hidden rounded-2xl shadow-xl">
               <img src={fallbackImage.src} alt={fallbackImage.alt} class="w-full h-full object-cover" loading="lazy" />
-              <figcaption class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent text-white p-6">
-                <p class="text-base sm:text-lg font-semibold">{fallbackImage.caption}</p>
-              </figcaption>
             </figure>
           )}
         </CompanyCarousel>
