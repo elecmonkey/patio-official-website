@@ -2,6 +2,7 @@
 import Layout from '@/layouts/Layout.astro';
 import { getLangFromUrl, useTranslations } from '@/i18n/utils';
 import { getRelativeLocaleUrl } from 'astro:i18n';
+import StackedCard from '@/components/StackedCard.astro';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -42,6 +43,11 @@ const categories = [
     title: t('home.competition.categories.physics.title'),
     description: t('competitions.categories.physics.desc'),
     items: t('home.competition.categories.physics.list').split('｜')
+  },
+  {
+    title: t('home.competition.categories.misc.title'),
+    description: t('competitions.categories.misc.desc'),
+    items: t('home.competition.categories.misc.list').split('｜')
   }
 ];
 
@@ -68,21 +74,27 @@ const comboSuggestions = t('competitions.combo.items').split('｜');
         <h2 class="text-3xl sm:text-4xl font-bold mb-4">{t('competitions.categories.title')}</h2>
         <p class="text-lg opacity-70">{t('competitions.categories.subtitle')}</p>
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+      <div class="columns-1 md:columns-2 xl:columns-3 gap-8 [column-fill:_balance]">
         {categories.map((category, index) => (
-          <div class="card card-border bg-base-100" style={`animation: slideInFromLeft 0.6s ease-out ${0.1 * index}s both`}>
-            <div class="card-body gap-3">
-              <h3 class="text-xl font-semibold">{category.title}</h3>
-              <p class="text-sm opacity-80 leading-relaxed">{category.description}</p>
-              <ul class="space-y-2 text-sm opacity-80 leading-relaxed">
-                {category.items.map((item) => (
-                  <li>{item}</li>
-                ))}
-              </ul>
+          <StackedCard
+            title={category.title}
+            description={category.description}
+            style={`animation: slideInFromLeft 0.6s ease-out ${0.1 * index}s both`}
+          >
+            <div class="grid gap-2">
+              {category.items.map(item => (
+                <span class="badge badge-neutral badge-outline w-full justify-start text-xs sm:text-sm">{item}</span>
+              ))}
             </div>
-          </div>
+            <div class="mt-4 h-1 w-0 bg-primary transition-all duration-300 group-hover:w-full"></div>
+          </StackedCard>
         ))}
       </div>
+      <p class="mt-10 text-sm sm:text-base text-center opacity-70">
+        {lang === 'en'
+          ? 'Above is a sample of the international competitions we cover. We tailor a preparation roadmap based on student profile, target majors, and application timelines.'
+          : '以上赛事为常见范例。我们会基于学生背景、目标专业与申请节奏，定制个性化的备赛与背景提升路线。'}
+      </p>
     </div>
   </section>
 

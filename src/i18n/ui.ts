@@ -102,6 +102,8 @@ export const ui = {
     'home.competition.categories.business.list': 'IEO｜NEC｜BPA｜沃顿商赛｜SIC 商赛',
     'home.competition.categories.physics.title': '物理类竞赛',
     'home.competition.categories.physics.list': 'BPhO｜Physics Bowl｜IEO 科创',
+    'home.competition.categories.misc.title': '跨学科与背景提升',
+    'home.competition.categories.misc.list': '综合能力挑战｜背景提升项目｜国际科研营',
     'home.competition.cta': '获取竞赛规划',
 
     'home.oxbridge.title': '牛剑 / G5 笔面试备考',
@@ -159,6 +161,7 @@ export const ui = {
     'competitions.categories.humanity.desc': '深度打磨论文结构与批判性思维，冲刺 John Locke、马歇尔、LSE 等写作竞赛。',
     'competitions.categories.business.desc': '围绕经济金融与商业分析，辅导 IEO、NEC、BPA、沃顿商赛等活动。',
     'competitions.categories.physics.desc': '聚焦力学、电磁、天体与现代物理，备战 BPhO、Physics Bowl 等赛事。',
+    'competitions.categories.misc.desc': '覆盖综合能力、跨学科与背景提升项目，强化软实力与全球视野。',
     'competitions.strategy.title': '全程服务流程',
     'competitions.strategy.items': '赛前能力测评｜定制备赛课表｜真题拆解与模拟｜赛后复盘与竞赛报告',
     'competitions.combo.title': '赛事组合建议',
@@ -381,6 +384,8 @@ export const ui = {
     'home.competition.categories.business.list': 'IEO｜NEC｜BPA｜Wharton Global High School｜SIC',
     'home.competition.categories.physics.title': 'Physics',
     'home.competition.categories.physics.list': 'BPhO｜Physics Bowl｜IEO Innovation',
+    'home.competition.categories.misc.title': 'Interdisciplinary & Enrichment',
+    'home.competition.categories.misc.list': 'Global Challenges｜Profile Enrichment Programs｜International Research Camps',
     'home.competition.cta': 'Get Competition Plan',
 
     'home.oxbridge.title': 'Oxbridge & G5 Admissions Prep',
@@ -438,6 +443,7 @@ export const ui = {
     'competitions.categories.humanity.desc': 'Sharpen structure and critical thinking to excel in John Locke, Marshall, LSE, and other essay competitions.',
     'competitions.categories.business.desc': 'Focus on economics, finance, and business analytics for IEO, NEC, BPA, Wharton GHS, and additional contests.',
     'competitions.categories.physics.desc': 'Deep dives into mechanics, electromagnetism, astronomy, and modern physics for BPhO, Physics Bowl, and more.',
+    'competitions.categories.misc.desc': 'Cross-disciplinary contests and enrichment programs that elevate global awareness and leadership profiles.',
     'competitions.strategy.title': 'Service Workflow',
     'competitions.strategy.items': 'Pre-competition diagnostics｜Customized prep schedule｜Past-paper drills & simulations｜Post-event review and reporting',
     'competitions.combo.title': 'Recommended Track Combos',
