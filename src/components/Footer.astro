@@ -36,7 +36,6 @@ const contactInfo = [
   },
   {
     icon: 'location',
-    label: t('about.contact.addressLabel'),
     value: t('footer.address.detail')
   }
 ];
@@ -110,7 +109,7 @@ const contactInfo = [
                   {info.label}：{info.value}
                 </a>
               ) : (
-                <span>{info.label}：{info.value}</span>
+                <span>{info.value}</span>
               )}
             </li>
           ))}
