@@ -1,5 +1,6 @@
 ---
 import Layout from '@/layouts/Layout.astro';
+import StackedCard from '@/components/StackedCard.astro';
 import { getLangFromUrl, useTranslations } from '@/i18n/utils';
 import { getRelativeLocaleUrl } from 'astro:i18n';
 
@@ -59,21 +60,23 @@ const supportItems = t('curriculum.support.items').split('｜');
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
         {curriculumDetails.map((item, index) => (
-          <div class="card card-border bg-base-100" style={`animation: slideInFromLeft 0.6s ease-out ${0.1 * index}s both`}>
-            <div class="card-body gap-4">
-              <div class="badge badge-ghost uppercase tracking-wide w-fit">{item.code}</div>
-              <p class="text-base opacity-80 leading-relaxed">{item.description}</p>
-              <p class="text-sm opacity-80 leading-relaxed">{item.structure}</p>
-              <ul class="space-y-2 text-sm opacity-80 leading-relaxed">
-                {item.highlights.map((highlight) => (
-                  <li class="flex items-start gap-2">
-                    <span class="text-primary mt-1">•</span>
-                    <span>{highlight}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
+          <StackedCard
+            title={item.code}
+            description={item.description}
+            class="!mb-0"
+            style={`animation: slideInFromLeft 0.6s ease-out ${0.1 * index}s both`}
+          >
+            <p class="text-sm opacity-80 leading-relaxed">{item.structure}</p>
+            <ul class="space-y-2 text-sm opacity-80 leading-relaxed">
+              {item.highlights.map((highlight) => (
+                <li class="flex items-start gap-2">
+                  <span class="text-primary mt-1">•</span>
+                  <span>{highlight}</span>
+                </li>
+              ))}
+            </ul>
+            <div class="mt-4 h-1 w-0 bg-primary transition-all duration-300 group-hover:w-full"></div>
+          </StackedCard>
         ))}
       </div>
     </div>
