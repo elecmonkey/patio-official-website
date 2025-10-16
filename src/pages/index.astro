@@ -22,26 +22,22 @@ const curriculumPrograms = [
   {
     code: 'A-Level',
     title: t('home.curriculum.alevel.title'),
-    summary: t('home.curriculum.alevel.desc'),
-    detail: t('home.curriculum.alevel.detail')
+    summary: t('home.curriculum.alevel.desc')
   },
   {
     code: 'AP',
     title: t('home.curriculum.ap.title'),
-    summary: t('home.curriculum.ap.desc'),
-    detail: t('home.curriculum.ap.detail')
+    summary: t('home.curriculum.ap.desc')
   },
   {
     code: 'IB',
     title: t('home.curriculum.ib.title'),
-    summary: t('home.curriculum.ib.desc'),
-    detail: t('home.curriculum.ib.detail')
+    summary: t('home.curriculum.ib.desc')
   },
   {
     code: 'WACE',
     title: t('home.curriculum.wace.title'),
-    summary: t('home.curriculum.wace.desc'),
-    detail: t('home.curriculum.wace.detail')
+    summary: t('home.curriculum.wace.desc')
   }
 ];
 
@@ -51,31 +47,31 @@ const fulltimeHighlights = features;
 const competitionCategories = [
   {
     title: t('home.competition.categories.math.title'),
-    items: t('home.competition.categories.math.list').split('｜')
+    description: t('competitions.categories.math.desc')
   },
   {
     title: t('home.competition.categories.cs.title'),
-    items: t('home.competition.categories.cs.list').split('｜')
+    description: t('competitions.categories.cs.desc')
   },
   {
     title: t('home.competition.categories.chem.title'),
-    items: t('home.competition.categories.chem.list').split('｜')
+    description: t('competitions.categories.chem.desc')
   },
   {
     title: t('home.competition.categories.bio.title'),
-    items: t('home.competition.categories.bio.list').split('｜')
+    description: t('competitions.categories.bio.desc')
   },
   {
     title: t('home.competition.categories.humanity.title'),
-    items: t('home.competition.categories.humanity.list').split('｜')
+    description: t('competitions.categories.humanity.desc')
   },
   {
     title: t('home.competition.categories.business.title'),
-    items: t('home.competition.categories.business.list').split('｜')
+    description: t('competitions.categories.business.desc')
   },
   {
     title: t('home.competition.categories.physics.title'),
-    items: t('home.competition.categories.physics.list').split('｜')
+    description: t('competitions.categories.physics.desc')
   }
 ];
 
@@ -126,12 +122,11 @@ const fallbackImage = companyGallery[0];
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 md:gap-8">
         {curriculumPrograms.map((program, index) => (
-          <div class="card card-bordered bg-base-100" style={`animation: slideInFromLeft 0.6s ease-out ${0.1 * index}s both`}>
+          <div class="card card-border bg-base-100 h-full" style={`animation: slideInFromLeft 0.6s ease-out ${0.1 * index}s both`}>
             <div class="card-body space-y-4">
               <div class="badge badge-ghost uppercase tracking-wide w-fit">{program.code}</div>
-              <h3 class="text-xl font-bold leading-tight">{program.title}</h3>
-              <p class="text-sm opacity-80 leading-relaxed">{program.summary}</p>
-              <p class="text-sm opacity-80 leading-relaxed">{program.detail}</p>
+              <h3 class="text-xl font-semibold leading-tight">{program.title}</h3>
+              <p class="text-sm opacity-80 leading-relaxed" style="display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden;">{program.summary}</p>
             </div>
           </div>
         ))}
@@ -183,14 +178,10 @@ const fallbackImage = companyGallery[0];
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
         {competitionCategories.map((category, index) => (
-          <div class="card card-border bg-base-100" style={`animation: slideInFromLeft 0.6s ease-out ${0.1 * index}s both`}>
+          <div class="card card-border bg-base-100 h-full" style={`animation: slideInFromLeft 0.6s ease-out ${0.1 * index}s both`}>
             <div class="card-body gap-3">
               <h3 class="text-xl font-semibold">{category.title}</h3>
-              <ul class="space-y-2 text-sm opacity-80 leading-relaxed">
-                {category.items.map((item) => (
-                  <li>{item}</li>
-                ))}
-              </ul>
+              <p class="text-sm opacity-80 leading-relaxed" style="display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden;">{category.description}</p>
             </div>
           </div>
         ))}
@@ -251,7 +242,7 @@ const fallbackImage = companyGallery[0];
       <div class="mt-10" style="animation: slideInFromLeft 0.6s ease-out 0.1s both">
         <CompanyCarousel images={companyGallery} client:visible>
           {fallbackImage && (
-            <figure slot="fallback" class="relative w-full max-w-5xl mx-auto h-72 sm:h-96 overflow-hidden rounded-2xl shadow-xl">
+            <figure slot="fallback" class="relative w-full max-w-6xl mx-auto h-[26rem] sm:h-[34rem] lg:h-[38rem] overflow-hidden rounded-3xl shadow-2xl">
               <img src={fallbackImage.src} alt={fallbackImage.alt} class="w-full h-full object-cover" loading="lazy" />
             </figure>
           )}
