@@ -1,5 +1,5 @@
 export const languages = {
-  'zh-cn': '中文',
+  'zh-cn': '简体中文',
   en: 'English',
 };
 
@@ -197,7 +197,7 @@ export const ui = {
     'contact.info.wechat': '官方微信',
     'contact.info.xiaohongshu': '小红书',
     'contact.info.phoneValue': '000-000-0000',
-    'contact.info.wechatValue': 'PatioEdu',
+    'contact.info.wechatValue': '攀梯国际教育',
     'contact.info.xiaohongshuValue': '攀梯教育官方账号',
 
     // About Page
@@ -312,7 +312,7 @@ export const ui = {
     'footer.column.curriculum': 'Curriculum',
     'footer.column.services': 'Admissions Services',
     'footer.column.contact': 'Contact',
-    'footer.address.detail': 'Room 2003, Building 01, No.300 Zhongshan East Road, Qinhuai District, Nanjing',
+    'footer.address.detail': 'No.300 Zhongshan East Road, Nanjing',
 
     // Home Page
     'home.hero.title': 'Redefine international academic pathways',
