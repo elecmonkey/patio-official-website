@@ -6,9 +6,6 @@ import wechatQR from '@/assets/wechat-qrcode.jpg';
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-// 页脚组件 - 模仿微软布局风格
-const currentYear = new Date().getFullYear();
-
 const curriculumLinks = [
   { name: t('nav.curriculum'), href: getRelativeLocaleUrl(lang, 'curriculum') },
   { name: t('nav.fulltime'), href: getRelativeLocaleUrl(lang, 'fulltime') },
@@ -128,8 +125,26 @@ const contactInfo = [
         <a href="tel:000-000-0000" class="hover:underline">{t('footer.contactPhone')}</a>
       </div>
       <div class="text-xs opacity-60">
-        © {currentYear} {t('brand.name')}. {t('footer.copyright')}
+        © 2022<span id="footer-year-range">-present</span> {t('brand.name')}. {t('footer.copyright')}
       </div>
     </div>
   </div>
 </footer>
+
+<script is:inline>
+  (() => {
+    const launchYear = 2022;
+    const run = () => {
+      const span = document.getElementById('footer-year-range');
+      if (!span) return;
+      const now = new Date().getFullYear();
+      if (Number.isFinite(now) && now > launchYear) {
+        span.textContent = `-${now}`;
+      } else {
+        span.textContent = '';
+      }
+    };
+    document.addEventListener('astro:after-swap', run);
+    run();
+  })();
+</script>
