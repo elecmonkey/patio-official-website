@@ -2,6 +2,10 @@
 import Layout from '@/layouts/Layout.astro';
 import { getLangFromUrl, useTranslations } from '@/i18n/utils';
 import { getRelativeLocaleUrl } from 'astro:i18n';
+import CompanyCarousel from '@/components/CompanyCarousel';
+import picCompany1 from '@/assets/company/pic1.jpg';
+import picCompany2 from '@/assets/company/pic2.jpg';
+import picCompany3 from '@/assets/company/pic3.jpg';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -77,6 +81,13 @@ const competitionCategories = [
 const oxbridgePainPoints = t('home.oxbridge.pains.items').split('｜');
 const oxbridgeServices = t('home.oxbridge.services.items').split('｜');
 const trustPoints = t('home.about.points').split('｜');
+const aboutCarouselCaptions = t('home.about.carousel.captions').split('｜');
+const companyGallery = [
+  { src: picCompany1.src, caption: aboutCarouselCaptions[0] ?? '', alt: aboutCarouselCaptions[0] ?? 'Company workspace' },
+  { src: picCompany2.src, caption: aboutCarouselCaptions[1] ?? '', alt: aboutCarouselCaptions[1] ?? 'Company classroom space' },
+  { src: picCompany3.src, caption: aboutCarouselCaptions[2] ?? '', alt: aboutCarouselCaptions[2] ?? 'Company lounge area' }
+];
+const fallbackImage = companyGallery[0];
 ---
 
 <Layout>
@@ -270,6 +281,18 @@ const trustPoints = t('home.about.points').split('｜');
         {trustPoints.map((point) => (
           <span class="badge badge-ghost px-4 py-3 text-sm sm:text-base">{point}</span>
         ))}
+      </div>
+      <div class="mt-10" style="animation: slideInFromLeft 0.6s ease-out 0.1s both">
+        <CompanyCarousel images={companyGallery} client:visible>
+          {fallbackImage && (
+            <figure slot="fallback" class="relative w-full max-w-5xl mx-auto h-72 sm:h-96 overflow-hidden rounded-2xl shadow-xl">
+              <img src={fallbackImage.src} alt={fallbackImage.alt} class="w-full h-full object-cover" loading="lazy" />
+              <figcaption class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent text-white p-6">
+                <p class="text-base sm:text-lg font-semibold">{fallbackImage.caption}</p>
+              </figcaption>
+            </figure>
+          )}
+        </CompanyCarousel>
       </div>
     </div>
   </section>

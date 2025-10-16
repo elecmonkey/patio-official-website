@@ -115,6 +115,7 @@ export const ui = {
     'home.about.title': '关于攀梯教育',
     'home.about.subtitle': '由海外归国硕博和教授创立，专注英语与学科能力提升，助力攀登名校之路。',
     'home.about.points': '海外教授导师团队｜10+ 年教学经验｜AP 5 分、A* 高分学员众多｜多项国际竞赛获奖案例',
+    'home.about.carousel.captions': '沉浸式学习空间｜互动式小组教室｜温馨学员休憩区',
 
     'home.cta.title': '立即预约学习规划',
     'home.cta.subtitle': '留下联系方式，获取专属课程与竞赛方案。',
@@ -393,6 +394,7 @@ export const ui = {
     'home.about.title': 'About Patio Education',
     'home.about.subtitle': 'Founded by overseas PhDs and professors, delivering personalized English and academic training for elite admissions.',
     'home.about.points': 'University professors as mentors｜10+ years of teaching experience｜AP 5s and A* achievers｜Multiple international competition winners',
+    'home.about.carousel.captions': 'Immersive learning space｜Collaborative classroom｜Relaxed student lounge',
 
     'home.cta.title': 'Book Your Learning Plan Today',
     'home.cta.subtitle': 'Leave your contact information to receive a tailored curriculum and competition roadmap.',
