@@ -2,6 +2,7 @@
 import { ClientRouter } from 'astro:transitions';
 import Header from '@/components/Header.astro';
 import Footer from '@/components/Footer.astro';
+import { getLangFromUrl } from '@/i18n/utils';
 import '@/styles/global.css';
 
 interface Props {
@@ -10,13 +11,16 @@ interface Props {
 }
 
 const {
-	title = 'Training - 成为全球受信赖的学习平台',
-	description = '为每个人提供实现职业目标的工具和资源，致力于通过高质量的课程内容和教学方法帮助终身学习者。'
+	title = '攀梯教育 · 国际课程与竞赛规划',
+	description = '专注 A-Level、AP、IB、WACE 课程与国际竞赛辅导，提供个性化学习方案，助力学生冲刺世界名校。'
 } = Astro.props;
+
+const currentLang = getLangFromUrl(Astro.url);
+const htmlLang = currentLang === 'en' ? 'en' : 'zh-CN';
 ---
 
 <!doctype html>
-<html lang="zh-CN" data-theme="corporate">
+<html lang={htmlLang} data-theme="corporate">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />

@@ -1,0 +1,128 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import { getLangFromUrl, useTranslations } from '@/i18n/utils';
+import { getRelativeLocaleUrl } from 'astro:i18n';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const curriculumDetails = [
+  {
+    code: 'A-Level',
+    description: t('curriculum.alevel.description'),
+    structure: t('curriculum.alevel.structure'),
+    highlights: t('curriculum.alevel.highlights').split('｜')
+  },
+  {
+    code: 'AP',
+    description: t('curriculum.ap.description'),
+    structure: t('curriculum.ap.structure'),
+    highlights: t('curriculum.ap.highlights').split('｜')
+  },
+  {
+    code: 'IB',
+    description: t('curriculum.ib.description'),
+    structure: t('curriculum.ib.structure'),
+    highlights: t('curriculum.ib.highlights').split('｜')
+  },
+  {
+    code: 'WACE',
+    description: t('curriculum.wace.description'),
+    structure: t('curriculum.wace.structure'),
+    highlights: t('curriculum.wace.highlights').split('｜')
+  }
+];
+
+const planningSteps = t('curriculum.path.steps').split('｜');
+const supportItems = t('curriculum.support.items').split('｜');
+---
+
+<Layout title={`${t('nav.curriculum')} - Patio Education`}>
+  <section class="bg-base-200 py-20 md:py-28">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6" style="animation: slideInFromLeft 0.6s ease-out both">
+      <h1 class="text-4xl sm:text-5xl font-bold leading-tight">{t('curriculum.hero.title')}</h1>
+      <p class="text-lg sm:text-xl opacity-80 leading-relaxed">{t('curriculum.hero.subtitle')}</p>
+      <div class="flex justify-center">
+        <a href={getRelativeLocaleUrl(lang, 'contact')} class="btn btn-primary btn-lg">
+          {t('curriculum.hero.cta')}
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 md:py-28">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16" style="animation: slideInFromLeft 0.6s ease-out both">
+        <h2 class="text-3xl sm:text-4xl font-bold mb-4">{t('curriculum.overview.title')}</h2>
+        <p class="text-lg opacity-70">{t('curriculum.overview.subtitle')}</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+        {curriculumDetails.map((item, index) => (
+          <div class="card card-border bg-base-100" style={`animation: slideInFromLeft 0.6s ease-out ${0.1 * index}s both`}>
+            <div class="card-body gap-4">
+              <div class="badge badge-ghost uppercase tracking-wide w-fit">{item.code}</div>
+              <p class="text-base opacity-80 leading-relaxed">{item.description}</p>
+              <p class="text-sm opacity-80 leading-relaxed">{item.structure}</p>
+              <ul class="space-y-2 text-sm opacity-80 leading-relaxed">
+                {item.highlights.map((highlight) => (
+                  <li class="flex items-start gap-2">
+                    <span class="text-primary mt-1">•</span>
+                    <span>{highlight}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-base-200 py-20 md:py-28">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-10" style="animation: slideInFromLeft 0.6s ease-out both">
+      <h2 class="text-3xl sm:text-4xl font-bold">{t('curriculum.path.title')}</h2>
+      <div class="flex flex-col md:flex-row justify-center items-center gap-6 text-sm sm:text-base font-medium">
+        {planningSteps.map((step, index) => (
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 rounded-full bg-primary text-primary-content flex items-center justify-center font-semibold">
+              {index + 1}
+            </div>
+            <span class="opacity-80">{step}</span>
+            {index < planningSteps.length - 1 && (
+              <svg class="w-6 h-6 text-primary hidden md:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="1.8" d="M9 5l7 7-7 7"></path>
+              </svg>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 md:py-28">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-12 items-center">
+      <div style="animation: slideInFromLeft 0.6s ease-out both">
+        <h2 class="text-3xl sm:text-4xl font-bold mb-6">{t('curriculum.support.title')}</h2>
+        <ul class="space-y-3 text-sm sm:text-base opacity-80 leading-relaxed">
+          {supportItems.map((item) => (
+            <li class="flex items-start gap-3">
+              <span class="text-primary mt-1">•</span>
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div class="card card-border bg-base-100 shadow-md" style="animation: slideInFromLeft 0.6s ease-out 0.2s both">
+        <div class="card-body space-y-4">
+          <h3 class="text-xl font-semibold">{t('nav.curriculum')}</h3>
+          <p class="text-sm opacity-80 leading-relaxed">
+            {t('home.curriculum.subtitle')}
+          </p>
+          <a href={getRelativeLocaleUrl(lang, 'contact')} class="btn btn-primary">
+            {t('curriculum.cta')}
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

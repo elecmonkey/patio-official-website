@@ -1,0 +1,91 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import { getLangFromUrl, useTranslations } from '@/i18n/utils';
+import wechatQR from '@/assets/wechat-qrcode.jpg';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const contactMethods = [
+  {
+    icon: 'phone',
+    label: t('contact.info.phone'),
+    value: t('contact.info.phoneValue'),
+    href: 'tel:000-000-0000'
+  },
+  {
+    icon: 'wechat',
+    label: t('contact.info.wechat'),
+    value: t('contact.info.wechatValue'),
+    image: wechatQR
+  },
+  {
+    icon: 'xiaohongshu',
+    label: t('contact.info.xiaohongshu'),
+    value: t('contact.info.xiaohongshuValue')
+  }
+];
+---
+
+<Layout title={`${t('nav.cta')} - Patio Education`}>
+  <section class="bg-base-200 py-20 md:py-28">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6" style="animation: slideInFromLeft 0.6s ease-out both">
+      <h1 class="text-4xl sm:text-5xl font-bold">{t('contact.hero.title')}</h1>
+      <p class="text-lg sm:text-xl opacity-80 leading-relaxed">{t('contact.hero.subtitle')}</p>
+    </div>
+  </section>
+
+  <section class="py-20 md:py-28">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 gap-6" style="animation: slideInFromLeft 0.6s ease-out both">
+        {contactMethods.map(method => (
+          <div class="card card-border bg-base-100 shadow-md">
+            <div class="card-body flex items-center gap-4">
+              <div class="w-12 h-12 flex items-center justify-center rounded-full bg-primary/10 text-primary">
+                {method.icon === 'phone' ? (
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="1.8" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                  </svg>
+                ) : method.icon === 'wechat' ? (
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="1.8" d="M9.75 9a1.25 1.25 0 11-2.5 0 1.25 1.25 0 012.5 0zM16.75 9a1.25 1.25 0 11-2.5 0 1.25 1.25 0 012.5 0z"></path>
+                    <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="1.8" d="M5 17l-2 2 2.5-.5A8.97 8.97 0 009 19c4.97 0 9-3.582 9-8s-4.03-8-9-8-9 3.582-9 8c0 2.166.873 4.137 2.322 5.612"></path>
+                    <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="1.8" d="M18.5 10c2.485 0 4.5 1.91 4.5 4.267 0 1.15-.47 2.206-1.24 3.007L22 20l-2.5-.5C18.662 19.811 17.857 20 17 20c-.84 0-1.64-.148-2.375-.42"></path>
+                  </svg>
+                ) : (
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="1.8" d="M4 4h16v16H4z"></path>
+                    <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="1.8" d="M4 10h16M12 10v10M8 4v6M16 4v6"></path>
+                  </svg>
+                )}
+              </div>
+              <div class="flex-1">
+                <h3 class="text-lg font-semibold">{method.label}</h3>
+                {method.href ? (
+                  <a href={method.href} class="text-primary hover:underline">
+                    {method.value}
+                  </a>
+                ) : (
+                  <p class="opacity-80">{method.value}</p>
+                )}
+                {method.image && (
+                  <img
+                    src={method.image.src}
+                    alt={`${method.label} QR`}
+                    class="mt-4 w-40 h-40 object-contain rounded border border-base-200"
+                    loading="lazy"
+                  />
+                )}
+              </div>
+            </div>
+          </div>
+        ))}
+        <div class="card card-border bg-base-100 shadow-md">
+          <div class="card-body text-sm opacity-70 leading-relaxed">
+            {t('home.cta.subtitle')}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

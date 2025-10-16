@@ -1,0 +1,116 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import { getLangFromUrl, useTranslations } from '@/i18n/utils';
+import { getRelativeLocaleUrl } from 'astro:i18n';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const categories = [
+  {
+    title: t('home.competition.categories.math.title'),
+    description: t('competitions.categories.math.desc'),
+    items: t('home.competition.categories.math.list').split('｜')
+  },
+  {
+    title: t('home.competition.categories.cs.title'),
+    description: t('competitions.categories.cs.desc'),
+    items: t('home.competition.categories.cs.list').split('｜')
+  },
+  {
+    title: t('home.competition.categories.chem.title'),
+    description: t('competitions.categories.chem.desc'),
+    items: t('home.competition.categories.chem.list').split('｜')
+  },
+  {
+    title: t('home.competition.categories.bio.title'),
+    description: t('competitions.categories.bio.desc'),
+    items: t('home.competition.categories.bio.list').split('｜')
+  },
+  {
+    title: t('home.competition.categories.humanity.title'),
+    description: t('competitions.categories.humanity.desc'),
+    items: t('home.competition.categories.humanity.list').split('｜')
+  },
+  {
+    title: t('home.competition.categories.business.title'),
+    description: t('competitions.categories.business.desc'),
+    items: t('home.competition.categories.business.list').split('｜')
+  },
+  {
+    title: t('home.competition.categories.physics.title'),
+    description: t('competitions.categories.physics.desc'),
+    items: t('home.competition.categories.physics.list').split('｜')
+  }
+];
+
+const workflow = t('competitions.strategy.items').split('｜');
+const comboSuggestions = t('competitions.combo.items').split('｜');
+---
+
+<Layout title={`${t('nav.competition')} - Patio Education`}>
+  <section class="bg-base-200 py-20 md:py-28">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6" style="animation: slideInFromLeft 0.6s ease-out both">
+      <h1 class="text-4xl sm:text-5xl font-bold">{t('competitions.hero.title')}</h1>
+      <p class="text-lg sm:text-xl opacity-80 leading-relaxed">{t('competitions.hero.subtitle')}</p>
+      <div class="flex justify-center">
+        <a href={getRelativeLocaleUrl(lang, 'contact')} class="btn btn-primary btn-lg">
+          {t('competitions.hero.cta')}
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 md:py-28">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16" style="animation: slideInFromLeft 0.6s ease-out both">
+        <h2 class="text-3xl sm:text-4xl font-bold mb-4">{t('competitions.categories.title')}</h2>
+        <p class="text-lg opacity-70">{t('competitions.categories.subtitle')}</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+        {categories.map((category, index) => (
+          <div class="card card-border bg-base-100" style={`animation: slideInFromLeft 0.6s ease-out ${0.1 * index}s both`}>
+            <div class="card-body gap-3">
+              <h3 class="text-xl font-semibold">{category.title}</h3>
+              <p class="text-sm opacity-80 leading-relaxed">{category.description}</p>
+              <ul class="space-y-2 text-sm opacity-80 leading-relaxed">
+                {category.items.map((item) => (
+                  <li>{item}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-base-200 py-20 md:py-28">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-12 items-center">
+      <div style="animation: slideInFromLeft 0.6s ease-out both">
+        <h2 class="text-3xl sm:text-4xl font-bold mb-6">{t('competitions.strategy.title')}</h2>
+        <ul class="space-y-3 text-sm sm:text-base opacity-80 leading-relaxed">
+          {workflow.map((step) => (
+            <li class="flex items-start gap-3">
+              <span class="text-primary mt-1">•</span>
+              <span>{step}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div class="card card-border bg-base-100 shadow-md" style="animation: slideInFromLeft 0.6s ease-out 0.2s both">
+        <div class="card-body gap-4">
+          <h3 class="text-xl font-semibold">{t('competitions.combo.title')}</h3>
+          <ul class="space-y-2 text-sm opacity-80 leading-relaxed">
+            {comboSuggestions.map((combo) => (
+              <li>{combo}</li>
+            ))}
+          </ul>
+          <a href={getRelativeLocaleUrl(lang, 'contact')} class="btn btn-primary mt-4">
+            {t('competitions.hero.cta')}
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,95 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import { getLangFromUrl, useTranslations } from '@/i18n/utils';
+import { getRelativeLocaleUrl } from 'astro:i18n';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const audience = t('home.fulltime.audience.items').split('｜');
+const advantages = t('fulltime.features.items').split('｜');
+const management = t('fulltime.management.items').split('｜');
+const timeline = t('fulltime.timeline.steps').split('｜');
+const support = t('fulltime.support.items').split('｜');
+---
+
+<Layout title={`${t('nav.fulltime')} - Patio Education`}>
+  <section class="bg-base-200 py-20 md:py-28">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6" style="animation: slideInFromLeft 0.6s ease-out both">
+      <h1 class="text-4xl sm:text-5xl font-bold">{t('fulltime.hero.title')}</h1>
+      <p class="text-lg sm:text-xl opacity-80 leading-relaxed">{t('fulltime.hero.subtitle')}</p>
+      <div class="flex justify-center">
+        <a href={getRelativeLocaleUrl(lang, 'contact')} class="btn btn-primary btn-lg">
+          {t('fulltime.hero.cta')}
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 md:py-28">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-12 items-start">
+      <div class="space-y-10" style="animation: slideInFromLeft 0.6s ease-out both">
+        <div>
+          <h2 class="text-3xl sm:text-4xl font-bold mb-6">{t('home.fulltime.audience.title')}</h2>
+          <ul class="space-y-3 text-sm sm:text-base opacity-80 leading-relaxed">
+            {audience.map((item) => (
+              <li class="flex items-start gap-3">
+                <span class="text-primary mt-1">•</span>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          <h2 class="text-3xl sm:text-4xl font-bold mb-6">{t('fulltime.features.title')}</h2>
+          <ul class="space-y-3 text-sm sm:text-base opacity-80 leading-relaxed">
+            {advantages.map((item) => (
+              <li class="flex items-start gap-3">
+                <span class="text-primary mt-1">•</span>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+      <div class="card card-border bg-base-100 shadow-md" style="animation: slideInFromLeft 0.6s ease-out 0.2s both">
+        <div class="card-body gap-4">
+          <h3 class="text-xl font-semibold">{t('fulltime.management.title')}</h3>
+          <ul class="space-y-2 text-sm opacity-80 leading-relaxed">
+            {management.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+          <div class="divider"></div>
+          <h4 class="text-lg font-semibold">{t('fulltime.support.title')}</h4>
+          <ul class="space-y-2 text-sm opacity-80 leading-relaxed">
+            {support.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+          <a href={getRelativeLocaleUrl(lang, 'contact')} class="btn btn-primary mt-4">
+            {t('home.fulltime.cta')}
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-base-200 py-20 md:py-28">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-10" style="animation: slideInFromLeft 0.6s ease-out both">
+      <h2 class="text-3xl sm:text-4xl font-bold">{t('fulltime.timeline.title')}</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-5 gap-6">
+        {timeline.map((step, index) => (
+          <div class="card card-border bg-base-100">
+            <div class="card-body items-center text-center gap-3">
+              <div class="w-12 h-12 rounded-full bg-primary text-primary-content flex items-center justify-center font-semibold">
+                {index + 1}
+              </div>
+              <p class="text-sm opacity-80 leading-relaxed">{step}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>

@@ -5,6 +5,8 @@ import { getLangFromUrl, useTranslations } from '@/i18n/utils';
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
+const teamHighlights = t('about.team.items').split('｜');
+const serviceItems = t('about.services.items').split('｜');
 const contactItems = [
   {
     type: 'phone',
@@ -24,7 +26,7 @@ const contactItems = [
 ];
 ---
 
-<Layout title={`${t('nav.about')} - Training`}>
+<Layout title={`${t('nav.about')} - Patio Education`}>
   <section class="bg-base-200 py-20 md:py-32">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16" style="animation: slideInFromLeft 0.6s ease-out">
@@ -52,6 +54,27 @@ const contactItems = [
         </div>
 
         <div class="card card-border bg-base-100 p-8 md:p-12" style="animation: slideInFromLeft 0.6s ease-out 0.6s both">
+          <h2 class="text-3xl font-bold mb-6">{t('about.team.title')}</h2>
+          <div class="flex flex-wrap gap-3">
+            {teamHighlights.map((highlight) => (
+              <span class="badge badge-ghost px-4 py-3 text-sm sm:text-base">{highlight}</span>
+            ))}
+          </div>
+        </div>
+
+        <div class="card card-border bg-base-100 p-8 md:p-12" style="animation: slideInFromLeft 0.6s ease-out 0.8s both">
+          <h2 class="text-3xl font-bold mb-6">{t('about.services.title')}</h2>
+          <ul class="space-y-3 text-sm sm:text-base opacity-80 leading-relaxed">
+            {serviceItems.map((item) => (
+              <li class="flex items-start gap-3">
+                <span class="text-primary mt-1">•</span>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div class="card card-border bg-base-100 p-8 md:p-12" style="animation: slideInFromLeft 0.6s ease-out 1s both">
           <h2 class="text-3xl font-bold mb-6">{t('about.contact.title')}</h2>
           <div class="space-y-4">
             {contactItems.map((item) => (

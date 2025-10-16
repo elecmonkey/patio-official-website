@@ -1,121 +1,139 @@
 ---
 import Layout from '@/layouts/Layout.astro';
 import { getLangFromUrl, useTranslations } from '@/i18n/utils';
+import { getRelativeLocaleUrl } from 'astro:i18n';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-// 统计数据
-const stats = [
-  { number: '3,000+', label: t('home.stats.courses') },
-  { number: '70+', label: t('home.stats.instructors') },
-  { number: '50+', label: t('home.stats.newCourses') },
-  { number: '20+', label: t('home.stats.certFields') }
+const features = [
+  { icon: 'mentors', title: t('home.features.mentors.title'), description: t('home.features.mentors.desc') },
+  { icon: 'personalized', title: t('home.features.personalized.title'), description: t('home.features.personalized.desc') },
+  { icon: 'feedback', title: t('home.features.feedback.title'), description: t('home.features.feedback.desc') },
+  { icon: 'environment', title: t('home.features.environment.title'), description: t('home.features.environment.desc') }
 ];
 
-// 解决方案卡片
-const solutions = [
+const curriculumPrograms = [
   {
-    icon: 'building',
-    title: t('home.solutions.enterprise.title'),
-    description: t('home.solutions.enterprise.desc')
+    code: 'A-Level',
+    title: t('home.curriculum.alevel.title'),
+    summary: t('home.curriculum.alevel.desc'),
+    detail: t('home.curriculum.alevel.detail')
   },
   {
-    icon: 'person',
-    title: t('home.solutions.individual.title'),
-    description: t('home.solutions.individual.desc')
+    code: 'AP',
+    title: t('home.curriculum.ap.title'),
+    summary: t('home.curriculum.ap.desc'),
+    detail: t('home.curriculum.ap.detail')
+  },
+  {
+    code: 'IB',
+    title: t('home.curriculum.ib.title'),
+    summary: t('home.curriculum.ib.desc'),
+    detail: t('home.curriculum.ib.detail')
+  },
+  {
+    code: 'WACE',
+    title: t('home.curriculum.wace.title'),
+    summary: t('home.curriculum.wace.desc'),
+    detail: t('home.curriculum.wace.detail')
   }
 ];
+
+const fulltimeAudience = t('home.fulltime.audience.items').split('｜');
+const fulltimeHighlights = features;
+
+const competitionCategories = [
+  {
+    title: t('home.competition.categories.math.title'),
+    items: t('home.competition.categories.math.list').split('｜')
+  },
+  {
+    title: t('home.competition.categories.cs.title'),
+    items: t('home.competition.categories.cs.list').split('｜')
+  },
+  {
+    title: t('home.competition.categories.chem.title'),
+    items: t('home.competition.categories.chem.list').split('｜')
+  },
+  {
+    title: t('home.competition.categories.bio.title'),
+    items: t('home.competition.categories.bio.list').split('｜')
+  },
+  {
+    title: t('home.competition.categories.humanity.title'),
+    items: t('home.competition.categories.humanity.list').split('｜')
+  },
+  {
+    title: t('home.competition.categories.business.title'),
+    items: t('home.competition.categories.business.list').split('｜')
+  },
+  {
+    title: t('home.competition.categories.physics.title'),
+    items: t('home.competition.categories.physics.list').split('｜')
+  }
+];
+
+const oxbridgePainPoints = t('home.oxbridge.pains.items').split('｜');
+const oxbridgeServices = t('home.oxbridge.services.items').split('｜');
+const trustPoints = t('home.about.points').split('｜');
 ---
 
 <Layout>
-  <!-- Hero Section -->
   <section class="hero bg-base-200 min-h-[60vh]">
-    <div class="hero-content text-center">
-      <div class="max-w-4xl">
-        <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold mb-6" style="animation: slideInFromLeft 0.6s ease-out">
-          {t('home.hero.title')}<span class="text-primary">{t('home.hero.titleHighlight')}</span>
+    <div class="hero-content text-center py-24">
+      <div class="max-w-4xl mx-auto space-y-8">
+        <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight tracking-tight space-y-2" style="animation: slideInFromLeft 0.6s ease-out">
+          <span class="block">{t('home.hero.title')}</span>
+          <span class="block text-primary">{t('home.hero.titleHighlight')}</span>
         </h1>
-        <p class="text-lg sm:text-xl max-w-3xl mx-auto leading-relaxed opacity-80" style="animation: slideInFromLeft 0.6s ease-out 0.2s both">
+        <p class="text-lg sm:text-xl leading-relaxed opacity-80" style="animation: slideInFromLeft 0.6s ease-out 0.2s both">
           {t('home.hero.subtitle')}
         </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Stats Section -->
-  <section class="bg-primary py-12">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-0">
-        {stats.map((stat, index) => (
-          <div
-            class={`flex flex-col items-center justify-center text-primary-content py-8 ${index < stats.length - 1 ? 'lg:border-r lg:border-primary-content/20' : ''}`}
-            style={`animation: slideInFromLeft 0.5s ease-out ${0.1 * index}s both`}
-          >
-            <div class="text-3xl sm:text-4xl md:text-5xl font-bold mb-2">{stat.number}</div>
-            <div class="text-primary-content/80 text-sm sm:text-base text-center">{stat.label}</div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Mission Section with Image -->
-  <section class="py-20 md:py-32">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-        <!-- Image -->
-        <div class="order-2 lg:order-1" style="animation: slideInFromLeft 0.6s ease-out 0.2s both">
-          <div class="bg-primary/10 aspect-video flex items-center justify-center">
-            <svg class="w-48 h-48 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253M9 12h.01M15 12h.01"></path>
-            </svg>
-          </div>
-        </div>
-
-        <!-- Content -->
-        <div class="order-1 lg:order-2" style="animation: slideInFromLeft 0.6s ease-out 0.1s both">
-          <p class="text-base sm:text-lg leading-relaxed">
-            {t('home.mission')}
-          </p>
+        <div class="flex flex-col sm:flex-row justify-center gap-4" style="animation: slideInFromLeft 0.6s ease-out 0.3s both">
+          <a href={getRelativeLocaleUrl(lang, 'contact')} class="btn btn-primary btn-lg">
+            {t('home.hero.primaryCta')}
+          </a>
+          <a href={getRelativeLocaleUrl(lang, 'curriculum')} class="btn btn-outline btn-lg">
+            {t('home.hero.secondaryCta')}
+          </a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Solutions Section -->
-  <section class="bg-base-200 py-20 md:py-32">
+  <section class="py-20 md:py-28">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16" style="animation: slideInFromLeft 0.6s ease-out both">
-        <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
-          {t('home.solutions.title')}
-        </h2>
-        <p class="text-lg opacity-80">
-          {t('home.solutions.subtitle')}
-        </p>
+        <h2 class="text-3xl sm:text-4xl font-bold mb-4">{t('home.features.title')}</h2>
+        <p class="text-lg opacity-80">{t('home.features.subtitle')}</p>
       </div>
-
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        {solutions.map((solution, index) => (
-          <div class="card card-border bg-base-100" style={`animation: slideInFromLeft 0.6s ease-out ${0.2 + index * 0.15}s both`}>
-            <div class="card-body">
-              <div class="mb-6">
-                {solution.icon === 'building' ? (
-                  <svg class="w-16 h-16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+        {features.map((feature, index) => (
+          <div class="card card-border bg-base-100" style={`animation: slideInFromLeft 0.6s ease-out ${0.1 * index}s both`}>
+            <div class="card-body gap-4">
+              <div class="w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center">
+                {feature.icon === 'mentors' ? (
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="1.8" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                  </svg>
+                ) : feature.icon === 'personalized' ? (
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="1.8" d="M12 6v6l4 2M5 12a7 7 0 0114 0 7 7 0 01-7 7H7l-2 3"></path>
+                  </svg>
+                ) : feature.icon === 'feedback' ? (
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="1.8" d="M21 12a9 9 0 11-5.62-8.32l-.38 2.14A7 7 0 1019 12h2z"></path>
+                    <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="1.8" d="M13 12l-2 2-1-1"></path>
                   </svg>
                 ) : (
-                  <svg class="w-16 h-16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="1.8" d="M4 7h16M4 12h16M4 17h9"></path>
                   </svg>
                 )}
               </div>
-              <h3 class="card-title text-2xl mb-4">
-                {solution.title}
-              </h3>
-              <p class="leading-relaxed opacity-80">
-                {solution.description}
-              </p>
+              <h3 class="text-2xl font-semibold">{feature.title}</h3>
+              <p class="leading-relaxed opacity-80">{feature.description}</p>
             </div>
           </div>
         ))}
@@ -123,31 +141,150 @@ const solutions = [
     </div>
   </section>
 
-  <!-- Honors Section -->
-  <section class="py-20 md:py-32">
+  <section class="bg-base-200 py-20 md:py-28">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16" style="animation: slideInFromLeft 0.6s ease-out both">
-        <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
-          {t('home.honors.title')}
-        </h2>
-        <p class="text-lg opacity-80">
-          {t('home.honors.subtitle')}
-        </p>
+        <h2 class="text-3xl sm:text-4xl font-bold mb-4">{t('home.curriculum.title')}</h2>
+        <p class="text-lg opacity-80">{t('home.curriculum.subtitle')}</p>
       </div>
-
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-        {[1, 2, 3, 4].map((item, index) => (
-          <div class="card card-border bg-base-100 aspect-square" style={`animation: slideInFromLeft 0.5s ease-out ${0.2 + index * 0.1}s both`}>
-            <div class="card-body items-center justify-center text-center">
-              <div class="text-4xl font-bold opacity-40 mb-2">
-                LOGO
-              </div>
-              <div class="text-sm opacity-60">
-                {t('home.honors.cert')} {item}
-              </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 md:gap-8">
+        {curriculumPrograms.map((program, index) => (
+          <div class="card card-bordered bg-base-100" style={`animation: slideInFromLeft 0.6s ease-out ${0.1 * index}s both`}>
+            <div class="card-body space-y-4">
+              <div class="badge badge-ghost uppercase tracking-wide w-fit">{program.code}</div>
+              <h3 class="text-xl font-bold leading-tight">{program.title}</h3>
+              <p class="text-sm opacity-80 leading-relaxed">{program.summary}</p>
+              <p class="text-sm opacity-80 leading-relaxed">{program.detail}</p>
             </div>
           </div>
         ))}
+      </div>
+      <div class="text-center mt-12">
+        <a href={getRelativeLocaleUrl(lang, 'curriculum')} class="btn btn-primary btn-lg">
+          {t('home.curriculum.cta')}
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 md:py-28">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-12 items-center">
+      <div style="animation: slideInFromLeft 0.6s ease-out both">
+        <h2 class="text-3xl sm:text-4xl font-bold mb-6">{t('home.fulltime.title')}</h2>
+        <p class="text-lg opacity-80 mb-8">{t('home.fulltime.subtitle')}</p>
+        <h3 class="text-xl font-semibold mb-4">{t('home.fulltime.audience.title')}</h3>
+        <ul class="space-y-3 text-sm sm:text-base">
+          {fulltimeAudience.map((item) => (
+            <li class="flex items-start gap-3">
+              <span class="mt-1 text-primary">•</span>
+              <span class="opacity-80 leading-relaxed">{item}</span>
+            </li>
+          ))}
+        </ul>
+        <a href={getRelativeLocaleUrl(lang, 'fulltime')} class="btn btn-primary mt-10">
+          {t('home.fulltime.cta')}
+        </a>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4" style="animation: slideInFromLeft 0.6s ease-out 0.2s both">
+        {fulltimeHighlights.map((item, index) => (
+          <div class="card card-border bg-base-100" style={`animation: slideInFromLeft 0.6s ease-out ${0.1 * index}s both`}>
+            <div class="card-body gap-3">
+              <h4 class="text-lg font-semibold">{item.title}</h4>
+              <p class="text-sm opacity-80 leading-relaxed">{item.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-base-200 py-20 md:py-28">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16" style="animation: slideInFromLeft 0.6s ease-out both">
+        <h2 class="text-3xl sm:text-4xl font-bold mb-4">{t('home.competition.title')}</h2>
+        <p class="text-lg opacity-80">{t('home.competition.subtitle')}</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+        {competitionCategories.map((category, index) => (
+          <div class="card card-border bg-base-100" style={`animation: slideInFromLeft 0.6s ease-out ${0.1 * index}s both`}>
+            <div class="card-body gap-3">
+              <h3 class="text-xl font-semibold">{category.title}</h3>
+              <ul class="space-y-2 text-sm opacity-80 leading-relaxed">
+                {category.items.map((item) => (
+                  <li>{item}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        ))}
+      </div>
+      <div class="text-center mt-12">
+        <a href={getRelativeLocaleUrl(lang, 'competitions')} class="btn btn-outline">
+          {t('home.competition.cta')}
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 md:py-28 bg-gradient-to-r from-primary/10 via-base-100 to-primary/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-12 items-start">
+      <div class="card card-border bg-base-100" style="animation: slideInFromLeft 0.6s ease-out both">
+        <div class="card-body gap-4">
+          <h3 class="text-2xl font-bold text-primary">{t('home.oxbridge.title')}</h3>
+          <p class="text-base opacity-80">{t('home.oxbridge.subtitle')}</p>
+          <h4 class="text-lg font-semibold mt-4">{t('home.oxbridge.pains.title')}</h4>
+          <ul class="space-y-3 text-sm opacity-80 leading-relaxed">
+            {oxbridgePainPoints.map((item) => (
+              <li class="flex items-start gap-3">
+                <span class="text-primary mt-1">•</span>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+      <div class="card card-border bg-base-100" style="animation: slideInFromLeft 0.6s ease-out 0.2s both">
+        <div class="card-body gap-4">
+          <h4 class="text-lg font-semibold">{t('home.oxbridge.services.title')}</h4>
+          <ul class="space-y-3 text-sm opacity-80 leading-relaxed">
+            {oxbridgeServices.map((item) => (
+              <li class="flex items-start gap-3">
+                <span class="text-primary mt-1">•</span>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+          <a href={getRelativeLocaleUrl(lang, 'oxbridge')} class="btn btn-primary mt-6">
+            {t('home.oxbridge.cta')}
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 md:py-28">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8" style="animation: slideInFromLeft 0.6s ease-out both">
+      <h2 class="text-3xl sm:text-4xl font-bold">{t('home.about.title')}</h2>
+      <p class="text-lg opacity-80 leading-relaxed">{t('home.about.subtitle')}</p>
+      <div class="flex flex-col sm:flex-row justify-center gap-4 text-base font-medium">
+        {trustPoints.map((point) => (
+          <span class="badge badge-ghost px-4 py-3 text-sm sm:text-base">{point}</span>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-primary text-primary-content py-20 md:py-24">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
+      <h2 class="text-3xl sm:text-4xl font-bold">{t('home.cta.title')}</h2>
+      <p class="text-lg opacity-90">{t('home.cta.subtitle')}</p>
+      <div class="flex flex-col sm:flex-row justify-center gap-4">
+        <a href={getRelativeLocaleUrl(lang, 'contact')} class="btn btn-neutral btn-lg">
+          {t('home.cta.primary')}
+        </a>
+        <a href="tel:000-000-0000" class="btn btn-outline btn-lg text-primary-content border-primary-content/40 hover:bg-primary-content hover:text-primary">
+          {t('home.cta.secondary')}
+        </a>
       </div>
     </div>
   </section>

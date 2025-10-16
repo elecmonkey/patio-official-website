@@ -1,0 +1,57 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import { getLangFromUrl, useTranslations } from '@/i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<Layout title={`${t('nav.cta')} - Patio Education`}>
+  <section class="bg-base-200 py-20 md:py-28">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6" style="animation: slideInFromLeft 0.6s ease-out both">
+      <h1 class="text-4xl sm:text-5xl font-bold">{t('contact.hero.title')}</h1>
+      <p class="text-lg sm:text-xl opacity-80 leading-relaxed">{t('contact.hero.subtitle')}</p>
+    </div>
+  </section>
+
+  <section class="py-20 md:py-28">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="card card-border bg-base-100 shadow-lg" style="animation: slideInFromLeft 0.6s ease-out both">
+        <div class="card-body space-y-6">
+          <form class="space-y-4" onsubmit="event.preventDefault();">
+            <div>
+              <label class="label">
+                <span class="label-text">{t('contact.form.student')}</span>
+              </label>
+              <input type="text" class="input input-bordered w-full" placeholder={t('contact.form.student')} />
+            </div>
+            <div>
+              <label class="label">
+                <span class="label-text">{t('contact.form.grade')}</span>
+              </label>
+              <input type="text" class="input input-bordered w-full" placeholder={t('contact.form.grade')} />
+            </div>
+            <div>
+              <label class="label">
+                <span class="label-text">{t('contact.form.goal')}</span>
+              </label>
+              <input type="text" class="input input-bordered w-full" placeholder={t('contact.form.goal')} />
+            </div>
+            <div>
+              <label class="label">
+                <span class="label-text">{t('contact.form.phone')}</span>
+              </label>
+              <input type="tel" class="input input-bordered w-full" placeholder="000-000-0000" />
+            </div>
+            <button type="submit" class="btn btn-primary w-full">
+              {t('contact.form.submit')}
+            </button>
+          </form>
+          <p class="text-xs opacity-60 text-center leading-relaxed">
+            {t('contact.form.note')}
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
