@@ -49,30 +49,12 @@ const programs = [
 const fulltimeItems = t('about.fulltime.items').split('｜');
 
 const competitionCategories = [
-  {
-    title: t('home.competition.categories.math.title'),
-    items: t('home.competition.categories.math.list').split('｜')
-  },
-  {
-    title: t('home.competition.categories.cs.title'),
-    items: t('home.competition.categories.cs.list').split('｜')
-  },
-  {
-    title: t('home.competition.categories.chem.title'),
-    items: t('home.competition.categories.chem.list').split('｜')
-  },
-  {
-    title: t('home.competition.categories.bio.title'),
-    items: t('home.competition.categories.bio.list').split('｜')
-  },
-  {
-    title: t('home.competition.categories.humanity.title'),
-    items: t('home.competition.categories.humanity.list').split('｜')
-  },
-  {
-    title: t('home.competition.categories.business.title'),
-    items: t('home.competition.categories.business.list').split('｜')
-  }
+  t('home.competition.categories.math.title'),
+  t('home.competition.categories.cs.title'),
+  t('home.competition.categories.chem.title'),
+  t('home.competition.categories.bio.title'),
+  t('home.competition.categories.humanity.title'),
+  t('home.competition.categories.business.title')
 ];
 
 const oxbridgeItems = t('about.oxbridge.items').split('｜');
@@ -231,13 +213,8 @@ const fallbackImage = companyGallery[0];
           <p class="text-base opacity-80 leading-relaxed">{t('about.competitions.subtitle')}</p>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm opacity-80">
             {competitionCategories.map((category, index) => (
-              <div style={`animation: slideInFromLeft 0.6s ease-out ${0.1 * index}s both`}>
-                <h3 class="font-semibold text-base mb-2">{category.title}</h3>
-                <ul class="space-y-1 leading-relaxed">
-                  {category.items.map(item => (
-                    <li>{item}</li>
-                  ))}
-                </ul>
+              <div class="p-4 rounded-lg border border-base-300 bg-base-100/80" style={`animation: slideInFromLeft 0.6s ease-out ${0.1 * index}s both`}>
+                <h3 class="font-semibold text-base">{category}</h3>
               </div>
             ))}
           </div>
