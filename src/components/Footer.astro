@@ -7,16 +7,40 @@ import wechatLogo from '@/assets/out/wechat-logo.svg';
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-const curriculumLinks = [
-  { name: t('nav.curriculum'), href: getRelativeLocaleUrl(lang, 'curriculum') },
-  { name: t('nav.fulltime'), href: getRelativeLocaleUrl(lang, 'fulltime') },
-  { name: t('nav.competition'), href: getRelativeLocaleUrl(lang, 'competitions') }
+const programHighlights = [
+  {
+    title: t('footer.programs.curriculum.title'),
+    description: t('footer.programs.curriculum.desc'),
+    href: getRelativeLocaleUrl(lang, 'curriculum')
+  },
+  {
+    title: t('footer.programs.fulltime.title'),
+    description: t('footer.programs.fulltime.desc'),
+    href: getRelativeLocaleUrl(lang, 'fulltime')
+  },
+  {
+    title: t('footer.programs.competition.title'),
+    description: t('footer.programs.competition.desc'),
+    href: getRelativeLocaleUrl(lang, 'competitions')
+  }
 ];
 
-const serviceLinks = [
-  { name: t('nav.oxbridge'), href: getRelativeLocaleUrl(lang, 'oxbridge') },
-  { name: t('nav.cta'), href: getRelativeLocaleUrl(lang, 'contact') },
-  { name: t('nav.about'), href: getRelativeLocaleUrl(lang, 'about') }
+const planningHighlights = [
+  {
+    title: t('footer.planning.oxbridge.title'),
+    description: t('footer.planning.oxbridge.desc'),
+    href: getRelativeLocaleUrl(lang, 'oxbridge')
+  },
+  {
+    title: t('footer.planning.consult.title'),
+    description: t('footer.planning.consult.desc'),
+    href: getRelativeLocaleUrl(lang, 'contact')
+  },
+  {
+    title: t('footer.planning.about.title'),
+    description: t('footer.planning.about.desc'),
+    href: getRelativeLocaleUrl(lang, 'about')
+  }
 ];
 
 const contactInfo = [
@@ -45,11 +69,16 @@ const contactInfo = [
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
       <nav>
         <h6 class="font-semibold text-sm mb-4">{t('footer.column.curriculum')}</h6>
-        <ul class="space-y-3">
-          {curriculumLinks.map((link) => (
+        <ul class="space-y-4">
+          {programHighlights.map((item) => (
             <li>
-              <a href={link.href} class="text-sm opacity-70 hover:opacity-100 hover:underline transition-opacity">
-                {link.name}
+              <a href={item.href} class="group block">
+                <p class="text-sm font-semibold opacity-80 group-hover:opacity-100 transition-opacity">
+                  {item.title}
+                </p>
+                <p class="mt-1 text-xs opacity-60 group-hover:opacity-80 leading-relaxed transition-opacity">
+                  {item.description}
+                </p>
               </a>
             </li>
           ))}
@@ -57,11 +86,16 @@ const contactInfo = [
       </nav>
       <nav>
         <h6 class="font-semibold text-sm mb-4">{t('footer.column.services')}</h6>
-        <ul class="space-y-3">
-          {serviceLinks.map((link) => (
+        <ul class="space-y-4">
+          {planningHighlights.map((item) => (
             <li>
-              <a href={link.href} class="text-sm opacity-70 hover:opacity-100 hover:underline transition-opacity">
-                {link.name}
+              <a href={item.href} class="group block">
+                <p class="text-sm font-semibold opacity-80 group-hover:opacity-100 transition-opacity">
+                  {item.title}
+                </p>
+                <p class="mt-1 text-xs opacity-60 group-hover:opacity-80 leading-relaxed transition-opacity">
+                  {item.description}
+                </p>
               </a>
             </li>
           ))}
@@ -119,7 +153,9 @@ const contactInfo = [
     <div class="flex flex-col md:flex-row justify-between items-center gap-4">
       <div class="flex items-center gap-6 text-xs opacity-60">
         <span>{t('brand.name')}</span>
-        <a href="tel:000-000-0000" class="hover:underline">{t('footer.contactPhone')}</a>
+        <a href="https://beian.miit.gov.cn/" target="_blank" rel="noreferrer" class="hover:underline">
+          {t('footer.icp')}
+        </a>
       </div>
       <div class="text-xs opacity-60">
         © 2022<span id="footer-year-range">-present</span> {t('brand.name')}. {t('footer.copyright')}
