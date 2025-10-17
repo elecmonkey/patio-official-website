@@ -57,6 +57,11 @@ export const ui = {
     'footer.planning.consult.desc': '预约顾问获取个性化学习与申请方案',
     'footer.planning.about.title': '认识攀梯国际',
     'footer.planning.about.desc': '了解导师团队、教学理念与学习环境',
+    'floating.backTop': '返回顶部',
+    'floating.wechat': '添加微信',
+    'floating.phoneCall': '电话联系',
+    'floating.screenshotHint': '截屏扫一扫',
+    'floating.callHint': '点这里拨号',
 
     // Home Page
     'home.hero.title': '重新定义国际学科升学',
@@ -354,6 +359,11 @@ export const ui = {
     'footer.planning.consult.desc': 'Book an advisor for a personalised study roadmap',
     'footer.planning.about.title': 'About Patio Academy',
     'footer.planning.about.desc': 'Meet our mentor team and learning philosophy',
+    'floating.backTop': 'Back to Top',
+    'floating.wechat': 'Connect on WeChat',
+    'floating.phoneCall': 'Phone Contact',
+    'floating.screenshotHint': 'Scan the QR code',
+    'floating.callHint': 'Tap here to call',
 
     // Home Page
     'home.hero.title': 'Your International Academic Pathways',

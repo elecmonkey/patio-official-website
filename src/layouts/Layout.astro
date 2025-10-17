@@ -2,7 +2,8 @@
 import { ClientRouter } from 'astro:transitions';
 import Header from '@/components/Header.astro';
 import Footer from '@/components/Footer.astro';
-import { getLangFromUrl } from '@/i18n/utils';
+import FloatingActions from '@/components/FloatingActions';
+import { getLangFromUrl, useTranslations } from '@/i18n/utils';
 import '@/styles/global.css';
 
 interface Props {
@@ -25,6 +26,28 @@ const defaultMeta = {
 } as const;
 
 const metaDefaults = defaultMeta[currentLang] ?? defaultMeta['zh-cn'];
+
+const zhT = useTranslations('zh-cn');
+const enT = useTranslations('en');
+
+const floatingTexts = {
+	'zh-cn': {
+		phoneHref: 'tel:18061256544',
+		phoneText: zhT('contact.info.phoneValue'),
+		wechatLabel: zhT('floating.wechat'),
+		backTopLabel: zhT('floating.backTop'),
+		screenshotHint: zhT('floating.screenshotHint'),
+		callHint: zhT('floating.callHint')
+	},
+	en: {
+		phoneHref: 'tel:18061256544',
+		phoneText: enT('contact.info.phoneValue'),
+		wechatLabel: enT('floating.wechat'),
+		backTopLabel: enT('floating.backTop'),
+		screenshotHint: enT('floating.screenshotHint'),
+		callHint: enT('floating.callHint')
+	}
+} as const;
 
 const {
 	title = metaDefaults.title,
@@ -49,5 +72,6 @@ const {
 			<slot />
 		</main>
 		<Footer />
+		<FloatingActions client:load lang={currentLang} textsByLang={floatingTexts} />
 	</body>
 </html>
