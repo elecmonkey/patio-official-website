@@ -117,7 +117,7 @@ export const ui = {
     'home.competition.categories.physics.list': 'BPhO｜Physics Bowl｜IEO 科创',
     'home.competition.categories.misc.title': '跨学科与背景提升',
     'home.competition.categories.misc.list': '综合能力挑战｜背景提升项目｜国际科研营',
-    'home.competition.cta': '获取竞赛规划',
+    'home.competition.cta': '更多竞赛信息',
 
     'home.oxbridge.title': '牛剑 / G5 笔面试备考',
     'home.oxbridge.subtitle': '结合笔试、面试与申请材料辅导，全面提升顶尖院校录取率。',
@@ -125,7 +125,7 @@ export const ui = {
     'home.oxbridge.pains.items': 'MAT/PAT/TSA 等题型刁钻，解题逻辑与 A-Level 完全不同｜面试深挖学术广度与思维深度，压力测试淘汰率高｜官方题库更新快，信息差大，盲目刷题难命中重点',
     'home.oxbridge.services.title': '服务模块',
     'home.oxbridge.services.items': '笔试专项辅导（MAT、PAT、TSA、TMUA 等）｜一对一面试训练与模拟反馈｜G5 入学考试导读与独家资料库｜A-Level / IB 全科冲刺与背景提升',
-    'home.oxbridge.cta': '预约牛剑备考顾问',
+    'home.oxbridge.cta': '了解更多牛剑/G5',
 
     'home.about.title': '关于攀梯国际',
     'home.about.subtitle': '由海外归国硕博和教授创立，专注英语与学科能力提升，助力攀登名校之路。',
@@ -134,7 +134,7 @@ export const ui = {
 
     'home.cta.title': '立即预约学习规划',
     'home.cta.subtitle': '留下联系方式，获取专属课程与竞赛方案。',
-    'home.cta.primary': '预约顾问',
+    'home.cta.primary': '在线联系',
     'home.cta.secondary': '拨打咨询热线',
 
     // Curriculum Page
@@ -359,8 +359,8 @@ export const ui = {
     'home.hero.title': 'Your International Academic Pathways',
     'home.hero.titleHighlight': 'Toward World-Class Universities',
     'home.hero.subtitle': 'Personalized learning plans crafted for every student. We integrate courses, competitions, and interview coaching to guide learners toward their dream schools.',
-    'home.hero.primaryCta': 'Book a Planning Session',
-    'home.hero.secondaryCta': 'Download Program Guide',
+    'home.hero.primaryCta': 'Chat with Us',
+    'home.hero.secondaryCta': 'Get the Program Guide',
 
     'home.features.title': 'Why Patio Academy',
     'home.features.subtitle': 'A complete learning loop built on expert mentors, personalized plans, and rapid feedback.',
@@ -414,7 +414,7 @@ export const ui = {
     'home.competition.categories.physics.list': 'BPhO｜Physics Bowl｜IEO Innovation',
     'home.competition.categories.misc.title': 'Interdisciplinary & Enrichment',
     'home.competition.categories.misc.list': 'Global Challenges｜Profile Enrichment Programs｜International Research Camps',
-    'home.competition.cta': 'Get Competition Plan',
+    'home.competition.cta': 'Learn More About Competitions',
 
     'home.oxbridge.title': 'Oxbridge & G5 Admissions Prep',
     'home.oxbridge.subtitle': 'Integrated coaching for entrance exams, interviews, and application materials.',
@@ -422,7 +422,7 @@ export const ui = {
     'home.oxbridge.pains.items': 'Exam formats such as MAT/PAT/TSA require non-standard problem-solving｜Interviews pressure-test academic depth and structured thinking｜Rapidly changing official question banks create information gaps',
     'home.oxbridge.services.title': 'What We Offer',
     'home.oxbridge.services.items': 'Exam coaching for MAT, PAT, TSA, TMUA, and more｜1-on-1 interview practice with expert feedback｜Exclusive guides for G5 admissions tests and materials｜A-Level/IB subject acceleration with profile enhancement',
-    'home.oxbridge.cta': 'Talk to an Oxbridge Coach',
+    'home.oxbridge.cta': 'Learn More About Oxbridge/G5',
 
     'home.about.title': 'About Patio Academy',
     'home.about.subtitle': 'Founded by overseas PhDs and professors, delivering personalized English and academic training for elite admissions.',
@@ -431,7 +431,7 @@ export const ui = {
 
     'home.cta.title': 'Book Your Learning Plan Today',
     'home.cta.subtitle': 'Leave your contact information to receive a tailored curriculum and competition roadmap.',
-    'home.cta.primary': 'Schedule a Call',
+    'home.cta.primary': 'Connect Online',
     'home.cta.secondary': 'Call Our Hotline',
 
     // Curriculum Page
