@@ -16,7 +16,7 @@ export const ui = {
     'nav.oxbridge': '牛剑 · G5备考',
     'nav.about': '关于攀梯',
     'nav.cta': '联系我们',
-    'nav.phone': '000-000-0000',
+    'nav.phone': '180-6125-6544',
 
     // Footer
     'footer.learning': '学习资源',
@@ -213,7 +213,7 @@ export const ui = {
     'contact.info.phone': '咨询热线',
     'contact.info.wechat': '官方微信',
     'contact.info.xiaohongshu': '小红书',
-    'contact.info.phoneValue': '000-000-0000',
+    'contact.info.phoneValue': '180-6125-6544',
     'contact.info.wechatValue': '攀梯国际教育',
     'contact.info.xiaohongshuValue': '攀梯国际教育',
 
@@ -313,7 +313,7 @@ export const ui = {
     'nav.oxbridge': 'Oxbridge',
     'nav.about': 'About',
     'nav.cta': 'Contact Us',
-    'nav.phone': '000-000-0000',
+    'nav.phone': '+86 180-6125-6544',
 
     // Footer
     'footer.learning': 'Learning',
@@ -510,7 +510,7 @@ export const ui = {
     'contact.info.phone': 'Hotline',
     'contact.info.wechat': 'WeChat',
     'contact.info.xiaohongshu': 'Xiaohongshu',
-    'contact.info.phoneValue': '000-000-0000',
+    'contact.info.phoneValue': '+86 180-6125-6544',
     'contact.info.wechatValue': 'PatioEdu',
     'contact.info.xiaohongshuValue': 'Patio Academy Official',
 
