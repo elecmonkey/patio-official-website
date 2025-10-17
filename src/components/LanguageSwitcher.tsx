@@ -1,3 +1,5 @@
+import type { MouseEvent } from 'react';
+import { useMemo } from 'react';
 import { navigate } from 'astro:transitions/client';
 import { languages } from '@/i18n/ui';
 
@@ -6,32 +8,47 @@ interface LanguageSwitcherProps {
   currentPath: string;
 }
 
+function buildTargetPath(currentPath: string, lang: string) {
+  if (lang === 'zh-cn') {
+    const normalized = currentPath.replace(/^\/en(\/|$)/, '/') || '/';
+    return normalized === '' ? '/' : normalized;
+  }
+
+  if (currentPath.startsWith('/en')) {
+    return currentPath;
+  }
+
+  if (currentPath === '/') {
+    return '/en';
+  }
+
+  return `/en${currentPath}`;
+}
+
 export default function LanguageSwitcher({ currentLang, currentPath }: LanguageSwitcherProps) {
-  const handleLanguageChange = (newLang: string) => {
-    // 检测浏览器是否支持 View Transitions
-    const supportsViewTransitions = 'startViewTransition' in document;
+  const targets = useMemo(() => {
+    return Object.fromEntries(
+      Object.keys(languages).map((code) => [code, buildTargetPath(currentPath, code)])
+    ) as Record<keyof typeof languages, string>;
+  }, [currentPath]);
 
-    let targetPath: string;
+  const handleLanguageChange = (event: MouseEvent<HTMLAnchorElement>, newLang: keyof typeof languages) => {
+    if (typeof window === 'undefined') return;
 
-    if (newLang === 'zh-cn') {
-      // 切换到中文：移除 /en 前缀
-      targetPath = currentPath.replace(/^\/en(\/|$)/, '/') || '/';
-    } else {
-      // 切换到英文：添加 /en 前缀
-      if (currentPath.startsWith('/en')) {
-        targetPath = currentPath;
-      } else {
-        targetPath = currentPath === '/' ? '/en' : `/en${currentPath}`;
-      }
+    event.preventDefault();
+
+    if (newLang === currentLang) {
+      return;
     }
 
+    const targetPath = targets[newLang];
+    const supportsViewTransitions = typeof document !== 'undefined' && 'startViewTransition' in document;
+
     if (supportsViewTransitions) {
-      // 使用 View Transitions API 进行平滑过渡
       (document as any).startViewTransition(() => {
         navigate(targetPath);
       });
     } else {
-      // 降级到客户端路由导航
       navigate(targetPath);
     }
   };
@@ -45,16 +62,20 @@ export default function LanguageSwitcher({ currentLang, currentPath }: LanguageS
         <span className="hidden sm:inline">{languages[currentLang]}</span>
       </summary>
       <ul className="dropdown-content menu bg-base-100 w-32 p-2 shadow border border-base-300 mt-2">
-        {Object.entries(languages).map(([code, name]) => (
-          <li key={code}>
-            <button
-              onClick={() => handleLanguageChange(code)}
-              className={currentLang === code ? 'menu-active' : ''}
-            >
-              {name}
-            </button>
-          </li>
-        ))}
+        {Object.entries(languages).map(([code, name]) => {
+          const typedCode = code as keyof typeof languages;
+          return (
+            <li key={code}>
+              <a
+                href={targets[typedCode]}
+                onClick={(event) => handleLanguageChange(event, typedCode)}
+                className={currentLang === typedCode ? 'menu-active' : ''}
+              >
+                {name}
+              </a>
+            </li>
+          );
+        })}
       </ul>
     </details>
   );
