@@ -82,15 +82,17 @@ const timeline = t('oxbridge.timeline.steps').split('｜');
   <section class="py-20 md:py-28">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-10" style="animation: slideInFromLeft 0.6s ease-out both">
       <h2 class="text-3xl sm:text-4xl font-bold">{t('oxbridge.timeline.title')}</h2>
-      <div class="flex flex-col md:flex-row justify-center items-center gap-6 text-sm sm:text-base font-medium">
+      <div class={`flex flex-col xl:flex-row gap-6 text-sm sm:text-base font-medium ${lang === 'zh-cn' ? 'items-start xl:items-center' : 'items-start xl:items-center'}`}>
         {timeline.map((step, index) => (
-          <div class="flex items-center gap-4">
+          <div class="flex items-center gap-4 w-full xl:w-auto">
             <div class="w-12 h-12 rounded-full bg-primary text-primary-content flex items-center justify-center font-semibold">
               {index + 1}
             </div>
-            <span class="opacity-80">{step}</span>
+            <span class={`opacity-80 ${lang === 'zh-cn' ? 'whitespace-nowrap' : 'whitespace-normal'}`}>
+              {step}
+            </span>
             {index < timeline.length - 1 && (
-              <svg class="w-6 h-6 text-primary hidden md:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg class="w-6 h-6 text-primary hidden xl:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="1.8" d="M9 5l7 7-7 7"></path>
               </svg>
             )}
