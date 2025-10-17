@@ -27,6 +27,8 @@ export default function FloatingActions({ lang, textsByLang }: FloatingActionsPr
   const fallbackLang: Lang = 'zh-cn';
   const [active, setActive] = useState<ActionType | null>(null);
   const [currentLang, setCurrentLang] = useState<Lang>(lang);
+  const [mounted, setMounted] = useState(false);
+  const [visible, setVisible] = useState(false);
 
   useEffect(() => {
     setCurrentLang(lang);
@@ -39,6 +41,28 @@ export default function FloatingActions({ lang, textsByLang }: FloatingActionsPr
     };
     window.addEventListener('astro:after-swap', handler);
     return () => window.removeEventListener('astro:after-swap', handler);
+  }, []);
+
+  useEffect(() => {
+    let hideTimer: number | undefined;
+    const updateVisibility = () => {
+      const shouldShow = window.scrollY > 100;
+      if (shouldShow) {
+        setMounted(true);
+        requestAnimationFrame(() => setVisible(true));
+      } else {
+        setMounted(false);
+        setVisible(false);
+        setActive(null);
+      }
+    };
+    updateVisibility();
+    window.addEventListener('scroll', updateVisibility, { passive: true });
+    window.addEventListener('astro:after-swap', updateVisibility);
+    return () => {
+      window.removeEventListener('scroll', updateVisibility);
+      window.removeEventListener('astro:after-swap', updateVisibility);
+    };
   }, []);
 
   const texts = useMemo(() => {
@@ -59,7 +83,11 @@ export default function FloatingActions({ lang, textsByLang }: FloatingActionsPr
   };
 
   return (
-    <div className="fixed bottom-8 right-6 z-[60]">
+    <div
+      className={`fixed bottom-8 right-6 z-[60] transition-transform duration-300 ease-out ${
+        visible ? 'translate-x-0' : 'translate-x-24'
+      } ${mounted ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+    >
       <div className="flex flex-col items-end gap-3">
         {/* Back to Top */}
         <button
