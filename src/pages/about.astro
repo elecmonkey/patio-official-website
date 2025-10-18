@@ -4,6 +4,12 @@ import CompanyCarousel from '@/components/CompanyCarousel';
 import picCompany1 from '@/assets/company/pic1.jpg';
 import picCompany2 from '@/assets/company/pic2.jpg';
 import picCompany3 from '@/assets/company/pic3.jpg';
+import iconMathoverflow from '@/assets/academicons/academicons-mathoverflow.svg';
+import iconStackoverflow from '@/assets/academicons/academicons-stackoverflow.svg';
+import iconElsevier from '@/assets/academicons/academicons-elsevier.svg';
+import iconINaturalist from '@/assets/academicons/academicons-inaturalist.svg';
+import iconJstor from '@/assets/academicons/academicons-jstor.svg';
+import iconClarivate from '@/assets/academicons/academicons-clarivate.svg';
 import { getLangFromUrl, useTranslations } from '@/i18n/utils';
 
 const lang = getLangFromUrl(Astro.url);
@@ -48,14 +54,26 @@ const programs = [
 
 const fulltimeItems = t('about.fulltime.items').split('｜');
 
+const competitionIconMap = {
+  math: iconMathoverflow.src,
+  cs: iconStackoverflow.src,
+  chem: iconElsevier.src,
+  bio: iconINaturalist.src,
+  humanity: iconJstor.src,
+  business: iconClarivate.src
+} as const;
+
 const competitionCategories = [
-  t('home.competition.categories.math.title'),
-  t('home.competition.categories.cs.title'),
-  t('home.competition.categories.chem.title'),
-  t('home.competition.categories.bio.title'),
-  t('home.competition.categories.humanity.title'),
-  t('home.competition.categories.business.title')
-];
+  { key: 'math', title: t('home.competition.categories.math.title') },
+  { key: 'cs', title: t('home.competition.categories.cs.title') },
+  { key: 'chem', title: t('home.competition.categories.chem.title') },
+  { key: 'bio', title: t('home.competition.categories.bio.title') },
+  { key: 'humanity', title: t('home.competition.categories.humanity.title') },
+  { key: 'business', title: t('home.competition.categories.business.title') }
+].map((item) => ({
+  ...item,
+  iconSrc: competitionIconMap[item.key as keyof typeof competitionIconMap] ?? ''
+}));
 
 const oxbridgeItems = t('about.oxbridge.items').split('｜');
 const processSteps = t('about.process.steps').split('｜');
@@ -213,8 +231,13 @@ const fallbackImage = companyGallery[0];
           <p class="text-base opacity-80 leading-relaxed">{t('about.competitions.subtitle')}</p>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm opacity-80">
             {competitionCategories.map((category, index) => (
-              <div class="p-4 rounded-lg border border-base-300 bg-base-100/80" style={`animation: slideInFromLeft 0.6s ease-out ${0.1 * index}s both`}>
-                <h3 class="font-semibold text-base">{category}</h3>
+              <div class="p-4 rounded-lg border border-base-300 bg-base-100/80 flex items-center gap-3" style={`animation: slideInFromLeft 0.6s ease-out ${0.1 * index}s both`}>
+                {category.iconSrc && (
+                  <span class="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center flex-shrink-0">
+                    <img src={category.iconSrc} alt={category.title} class="w-6 h-6 object-contain" loading="lazy" />
+                  </span>
+                )}
+                <h3 class="font-semibold text-base">{category.title}</h3>
               </div>
             ))}
           </div>

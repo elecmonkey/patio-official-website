@@ -7,17 +7,37 @@ import picCompany1 from '@/assets/company/pic1.jpg';
 import picCompany2 from '@/assets/company/pic2.jpg';
 import picCompany3 from '@/assets/company/pic3.jpg';
 import worldMapGrid from '@/assets/world_map_grid.svg';
+import iconOrcid from '@/assets/academicons/academicons-orcid.svg';
+import iconMendeley from '@/assets/academicons/academicons-mendeley.svg';
+import iconOpenData from '@/assets/academicons/academicons-open-data.svg';
+import iconINaturalist from '@/assets/academicons/academicons-inaturalist.svg';
+import iconMathoverflow from '@/assets/academicons/academicons-mathoverflow.svg';
+import iconStackoverflow from '@/assets/academicons/academicons-stackoverflow.svg';
+import iconElsevier from '@/assets/academicons/academicons-elsevier.svg';
+import iconJstor from '@/assets/academicons/academicons-jstor.svg';
+import iconClarivate from '@/assets/academicons/academicons-clarivate.svg';
+import iconArxiv from '@/assets/academicons/academicons-arxiv.svg';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 const brand = lang === 'en' ? 'Patio Academy' : '攀梯国际';
+
+const featureIconMap = {
+  mentors: iconOrcid.src,
+  personalized: iconMendeley.src,
+  feedback: iconOpenData.src,
+  environment: iconINaturalist.src
+} as const;
 
 const features = [
   { icon: 'mentors', title: t('home.features.mentors.title'), description: t('home.features.mentors.desc') },
   { icon: 'personalized', title: t('home.features.personalized.title'), description: t('home.features.personalized.desc') },
   { icon: 'feedback', title: t('home.features.feedback.title'), description: t('home.features.feedback.desc') },
   { icon: 'environment', title: t('home.features.environment.title'), description: t('home.features.environment.desc') }
-];
+].map((item) => ({
+  ...item,
+  iconSrc: featureIconMap[item.icon as keyof typeof featureIconMap] ?? ''
+}));
 
 const curriculumPrograms = [
   {
@@ -45,36 +65,56 @@ const curriculumPrograms = [
 const fulltimeAudience = t('home.fulltime.audience.items').split('｜');
 const fulltimeHighlights = features;
 
+const competitionIconMap = {
+  math: iconMathoverflow.src,
+  cs: iconStackoverflow.src,
+  chem: iconElsevier.src,
+  bio: iconINaturalist.src,
+  humanity: iconJstor.src,
+  business: iconClarivate.src,
+  physics: iconArxiv.src
+} as const;
+
 const competitionCategories = [
   {
+    key: 'math',
     title: t('home.competition.categories.math.title'),
     description: t('competitions.categories.math.desc')
   },
   {
+    key: 'cs',
     title: t('home.competition.categories.cs.title'),
     description: t('competitions.categories.cs.desc')
   },
   {
+    key: 'chem',
     title: t('home.competition.categories.chem.title'),
     description: t('competitions.categories.chem.desc')
   },
   {
+    key: 'bio',
     title: t('home.competition.categories.bio.title'),
     description: t('competitions.categories.bio.desc')
   },
   {
+    key: 'humanity',
     title: t('home.competition.categories.humanity.title'),
     description: t('competitions.categories.humanity.desc')
   },
   {
+    key: 'business',
     title: t('home.competition.categories.business.title'),
     description: t('competitions.categories.business.desc')
   },
   {
+    key: 'physics',
     title: t('home.competition.categories.physics.title'),
     description: t('competitions.categories.physics.desc')
   }
-];
+].map((item) => ({
+  ...item,
+  iconSrc: competitionIconMap[item.key as keyof typeof competitionIconMap] ?? ''
+}));
 
 const oxbridgePainPoints = t('home.oxbridge.pains.items').split('｜');
 const oxbridgeServices = t('home.oxbridge.services.items').split('｜');
@@ -162,6 +202,11 @@ const fallbackImage = companyGallery[0];
         {fulltimeHighlights.map((item, index) => (
           <div class="card card-border bg-base-100" style={`animation: slideInFromLeft 0.6s ease-out ${0.1 * index}s both`}>
             <div class="card-body gap-3">
+              {item.iconSrc && (
+                <div class="w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center">
+                  <img src={item.iconSrc} alt={item.title} class="w-6 h-6 object-contain" loading="lazy" />
+                </div>
+              )}
               <h4 class="text-lg font-semibold">{item.title}</h4>
               <p class="text-sm opacity-80 leading-relaxed">{item.description}</p>
             </div>
@@ -181,8 +226,17 @@ const fallbackImage = companyGallery[0];
         {competitionCategories.map((category, index) => (
           <div class="card card-border bg-base-100 h-full" style={`animation: slideInFromLeft 0.6s ease-out ${0.1 * index}s both`}>
             <div class="card-body gap-3">
-              <h3 class="text-xl font-semibold">{category.title}</h3>
-              <p class="text-sm opacity-80 leading-relaxed" style="display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden;">{category.description}</p>
+              <div class="flex items-start gap-3">
+                {category.iconSrc && (
+                  <div class="w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center flex-shrink-0">
+                    <img src={category.iconSrc} alt={category.title} class="w-6 h-6 object-contain" loading="lazy" />
+                  </div>
+                )}
+                <div class="space-y-2">
+                  <h3 class="text-xl font-semibold">{category.title}</h3>
+                  <p class="text-sm opacity-80 leading-relaxed" style="display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden;">{category.description}</p>
+                </div>
+              </div>
             </div>
           </div>
         ))}

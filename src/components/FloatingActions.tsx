@@ -44,7 +44,6 @@ export default function FloatingActions({ lang, textsByLang }: FloatingActionsPr
   }, []);
 
   useEffect(() => {
-    let hideTimer: number | undefined;
     const updateVisibility = () => {
       const shouldShow = window.scrollY > 100;
       if (shouldShow) {
