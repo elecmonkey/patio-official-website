@@ -10,6 +10,58 @@ const brand = lang === 'en' ? 'Patio Academy' : '攀梯国际';
 const painPoints = t('home.oxbridge.pains.items').split('｜');
 const services = t('oxbridge.services.items').split('｜');
 const timeline = t('oxbridge.timeline.steps').split('｜');
+const g5Universities = [
+  {
+    key: 'oxford',
+    name: t('oxbridge.g5.oxford.name'),
+    stats: [
+      t('oxbridge.g5.oxford.qs'),
+      t('oxbridge.g5.oxford.intl'),
+      t('oxbridge.g5.oxford.admit'),
+      t('oxbridge.g5.oxford.tuition')
+    ]
+  },
+  {
+    key: 'cambridge',
+    name: t('oxbridge.g5.cambridge.name'),
+    stats: [
+      t('oxbridge.g5.cambridge.qs'),
+      t('oxbridge.g5.cambridge.intl'),
+      t('oxbridge.g5.cambridge.admit'),
+      t('oxbridge.g5.cambridge.tuition')
+    ]
+  },
+  {
+    key: 'ucl',
+    name: t('oxbridge.g5.ucl.name'),
+    stats: [
+      t('oxbridge.g5.ucl.qs'),
+      t('oxbridge.g5.ucl.intl'),
+      t('oxbridge.g5.ucl.admit'),
+      t('oxbridge.g5.ucl.tuition')
+    ]
+  },
+  {
+    key: 'imperial',
+    name: t('oxbridge.g5.imperial.name'),
+    stats: [
+      t('oxbridge.g5.imperial.qs'),
+      t('oxbridge.g5.imperial.intl'),
+      t('oxbridge.g5.imperial.admit'),
+      t('oxbridge.g5.imperial.tuition')
+    ]
+  },
+  {
+    key: 'lse',
+    name: t('oxbridge.g5.lse.name'),
+    stats: [
+      t('oxbridge.g5.lse.qs'),
+      t('oxbridge.g5.lse.intl'),
+      t('oxbridge.g5.lse.admit'),
+      t('oxbridge.g5.lse.tuition')
+    ]
+  }
+];
 ---
 
 <Layout title={`${t('nav.oxbridge')} - ${brand}`}>
@@ -47,6 +99,37 @@ const timeline = t('oxbridge.timeline.steps').split('｜');
             ))}
           </ul>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 md:py-28 bg-base-100">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+      <div class="text-center max-w-3xl mx-auto" style="animation: slideInFromLeft 0.6s ease-out both">
+        <h2 class="text-3xl sm:text-4xl font-bold mb-4">{t('oxbridge.g5.title')}</h2>
+        <p class="text-base sm:text-lg opacity-80 leading-relaxed">{t('oxbridge.g5.subtitle')}</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 xl:grid-cols-none xl:flex xl:flex-wrap xl:justify-center xl:gap-8">
+        {g5Universities.map((uni, index) => (
+          <div class="card card-border bg-base-100 shadow-sm ring-1 ring-base-300/60 xl:w-[30%] xl:min-w-[260px]" style={`animation: slideInFromLeft 0.6s ease-out ${0.08 * index}s both`}>
+            <div class="card-body space-y-4">
+              <div class="flex items-start gap-3">
+                <span class="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center font-semibold">
+                  {index + 1}
+                </span>
+                <h3 class="text-lg font-semibold leading-tight">{uni.name}</h3>
+              </div>
+              <ul class="space-y-2 text-sm sm:text-base opacity-80 leading-relaxed">
+                {uni.stats.map((stat) => (
+                  <li class="flex items-start gap-2">
+                    <span class="text-primary mt-1">•</span>
+                    <span>{stat}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   </section>
