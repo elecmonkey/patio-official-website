@@ -64,15 +64,38 @@ export default function FloatingActions({ lang, textsByLang }: FloatingActionsPr
     };
   }, []);
 
+  // 点击外部区域关闭popup
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent | TouchEvent) => {
+      const target = event.target as Element;
+      if (active && !target.closest('.floating-actions-container')) {
+        setActive(null);
+      }
+    };
+
+    if (active) {
+      document.addEventListener('click', handleClickOutside);
+      document.addEventListener('touchstart', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+      document.removeEventListener('touchstart', handleClickOutside);
+    };
+  }, [active]);
+
   const texts = useMemo(() => {
     return textsByLang[currentLang] ?? textsByLang[fallbackLang];
   }, [currentLang, textsByLang]);
 
   const handleToggle = (type: ActionType) => {
+    // 在移动设备上，直接切换到目标状态，不使用toggle逻辑
     if (typeof window !== 'undefined' && window.matchMedia('(hover: hover)').matches) {
+      // 桌面设备：支持hover，直接显示
       setActive(type);
       return;
     }
+    // 移动设备：直接显示popup，如果已经显示则关闭
     setActive((prev) => (prev === type ? null : type));
   };
 
@@ -83,7 +106,7 @@ export default function FloatingActions({ lang, textsByLang }: FloatingActionsPr
 
   return (
     <div
-      className={`fixed bottom-8 right-6 z-[60] transition-transform duration-300 ease-out ${
+      className={`floating-actions-container fixed bottom-8 right-6 z-[60] transition-transform duration-300 ease-out ${
         visible ? 'translate-x-0' : 'translate-x-24'
       } ${mounted ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
     >
@@ -103,12 +126,34 @@ export default function FloatingActions({ lang, textsByLang }: FloatingActionsPr
         {/* WeChat */}
         <div
           className="relative"
-          onMouseEnter={() => setActive('wechat')}
-          onMouseLeave={() => setActive(null)}
+          onMouseEnter={() => {
+            // 只在支持hover的设备上使用mouseenter
+            if (typeof window !== 'undefined' && window.matchMedia('(hover: hover)').matches) {
+              setActive('wechat');
+            }
+          }}
+          onMouseLeave={() => {
+            // 只在支持hover的设备上使用mouseleave
+            if (typeof window !== 'undefined' && window.matchMedia('(hover: hover)').matches) {
+              setActive(null);
+            }
+          }}
         >
           <button
             type="button"
-            onClick={() => handleToggle('wechat')}
+            onClick={() => {
+              // 检测是否为触摸设备
+              const isTouchDevice = typeof window !== 'undefined' && 
+                ('ontouchstart' in window || navigator.maxTouchPoints > 0);
+              
+              if (isTouchDevice) {
+                // 触摸设备：直接显示或关闭
+                setActive((prev) => (prev === 'wechat' ? null : 'wechat'));
+              } else {
+                // 非触摸设备：使用原有逻辑
+                handleToggle('wechat');
+              }
+            }}
             className="flex items-center justify-center w-12 h-12 rounded-full bg-primary shadow-lg text-primary-content hover:bg-primary/80 transition-colors"
             aria-haspopup="dialog"
             aria-expanded={active === 'wechat'}
@@ -129,12 +174,34 @@ export default function FloatingActions({ lang, textsByLang }: FloatingActionsPr
         {/* Phone */}
         <div
           className="relative"
-          onMouseEnter={() => setActive('phone')}
-          onMouseLeave={() => setActive(null)}
+          onMouseEnter={() => {
+            // 只在支持hover的设备上使用mouseenter
+            if (typeof window !== 'undefined' && window.matchMedia('(hover: hover)').matches) {
+              setActive('phone');
+            }
+          }}
+          onMouseLeave={() => {
+            // 只在支持hover的设备上使用mouseleave
+            if (typeof window !== 'undefined' && window.matchMedia('(hover: hover)').matches) {
+              setActive(null);
+            }
+          }}
         >
           <button
             type="button"
-            onClick={() => handleToggle('phone')}
+            onClick={() => {
+              // 检测是否为触摸设备
+              const isTouchDevice = typeof window !== 'undefined' && 
+                ('ontouchstart' in window || navigator.maxTouchPoints > 0);
+              
+              if (isTouchDevice) {
+                // 触摸设备：直接显示或关闭
+                setActive((prev) => (prev === 'phone' ? null : 'phone'));
+              } else {
+                // 非触摸设备：使用原有逻辑
+                handleToggle('phone');
+              }
+            }}
             className="flex items-center justify-center w-12 h-12 rounded-full bg-primary shadow-lg text-primary-content hover:bg-primary/80 transition-colors"
             aria-haspopup="dialog"
             aria-expanded={active === 'phone'}
