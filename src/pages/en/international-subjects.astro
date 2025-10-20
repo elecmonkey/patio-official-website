@@ -3,6 +3,10 @@ import Layout from '@/layouts/Layout.astro';
 import StackedCard from '@/components/StackedCard.astro';
 import { getLangFromUrl, useTranslations } from '@/i18n/utils';
 import { getRelativeLocaleUrl } from 'astro:i18n';
+import imgAlevel from '@/assets/course/alevel.jpg';
+import imgAp from '@/assets/course/ap.jpg';
+import imgIb from '@/assets/course/ib.jpg';
+import imgWace from '@/assets/course/wace.jpg';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -11,24 +15,28 @@ const brand = lang === 'en' ? 'Patio Academy' : '攀梯国际';
 const curriculumDetails = [
   {
     code: 'A-Level',
+    image: { src: imgAlevel.src, alt: t('home.curriculum.alevel.title') },
     description: t('curriculum.alevel.description'),
     structure: t('curriculum.alevel.structure'),
     highlights: t('curriculum.alevel.highlights').split('｜')
   },
   {
     code: 'AP',
+    image: { src: imgAp.src, alt: t('home.curriculum.ap.title') },
     description: t('curriculum.ap.description'),
     structure: t('curriculum.ap.structure'),
     highlights: t('curriculum.ap.highlights').split('｜')
   },
   {
     code: 'IB',
+    image: { src: imgIb.src, alt: t('home.curriculum.ib.title') },
     description: t('curriculum.ib.description'),
     structure: t('curriculum.ib.structure'),
     highlights: t('curriculum.ib.highlights').split('｜')
   },
   {
     code: 'WACE',
+    image: { src: imgWace.src, alt: t('home.curriculum.wace.title') },
     description: t('curriculum.wace.description'),
     structure: t('curriculum.wace.structure'),
     highlights: t('curriculum.wace.highlights').split('｜')
@@ -53,14 +61,19 @@ const supportItems = t('curriculum.support.items').split('｜');
         <h2 class="text-3xl sm:text-4xl font-bold mb-4">{t('curriculum.overview.title')}</h2>
         <p class="text-lg opacity-70">{t('curriculum.overview.subtitle')}</p>
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+      <div class="columns-1 md:columns-2 gap-6 md:gap-8 [column-fill:_balance]">
         {curriculumDetails.map((item, index) => (
           <StackedCard
             title={item.code}
             description={item.description}
-            class="!mb-0"
             style={`animation: slideInFromLeft 0.6s ease-out ${0.1 * index}s both`}
           >
+            <img
+              src={item.image.src}
+              alt={item.image.alt}
+              loading="lazy"
+              class="w-full rounded-lg border border-base-300/80 shadow-sm mb-4"
+            />
             <p class="text-sm opacity-80 leading-relaxed">{item.structure}</p>
             <ul class="space-y-2 text-sm opacity-80 leading-relaxed">
               {item.highlights.map((highlight) => (
