@@ -3,10 +3,14 @@ import Layout from '@/layouts/Layout.astro';
 import { getLangFromUrl, useTranslations } from '@/i18n/utils';
 import { getRelativeLocaleUrl } from 'astro:i18n';
 import StackedCard from '@/components/StackedCard.astro';
+import competitionsBannerZh from '@/assets/banner/competitions-banner.jpg';
+import competitionsBannerEn from '@/assets/banner/en/competitions-banner-en.jpg';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 const brand = lang === 'en' ? 'Patio Academy' : '攀梯国际';
+const heroBanner = lang === 'en' ? competitionsBannerEn.src : competitionsBannerZh.src;
+const heroAlt = t('competitions.hero.title');
 
 const categories = [
   {
@@ -56,11 +60,10 @@ const comboSuggestions = t('competitions.combo.items').split('｜');
 ---
 
 <Layout title={`${t('nav.competition')} - ${brand}`}>
-  <section class="bg-base-200 py-20 md:py-28">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6" style="animation: slideInFromLeft 0.6s ease-out both">
-      <h1 class="text-4xl sm:text-5xl font-bold">{t('competitions.hero.title')}</h1>
-      <p class="text-lg sm:text-xl opacity-80 leading-relaxed">{t('competitions.hero.subtitle')}</p>
-    </div>
+  <section class="relative">
+    <figure class="w-full">
+      <img src={heroBanner} alt={heroAlt} class="w-full h-auto" loading="eager" />
+    </figure>
   </section>
 
   <section class="py-20 md:py-28">
@@ -74,14 +77,15 @@ const comboSuggestions = t('competitions.combo.items').split('｜');
           <StackedCard
             title={category.title}
             description={category.description}
+            accent
             style={`animation: slideInFromLeft 0.6s ease-out ${0.1 * index}s both`}
           >
-            <div class="grid gap-2">
+            <div class="flex flex-wrap gap-2">
               {category.items.map(item => (
-                <span class="badge badge-neutral badge-outline w-full justify-start text-xs sm:text-sm">{item}</span>
+                <span class="inline-flex items-center border border-white/20 bg-white/10 px-3 py-2 text-xs sm:text-sm text-white/90">{item}</span>
               ))}
             </div>
-            <div class="mt-4 h-1 w-0 bg-primary transition-all duration-300 group-hover:w-full"></div>
+            <div class="mt-4 h-1 w-0 bg-white/60 transition-all duration-300 group-hover:w-full"></div>
           </StackedCard>
         ))}
       </div>

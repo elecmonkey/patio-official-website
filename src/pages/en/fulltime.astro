@@ -2,10 +2,14 @@
 import Layout from '@/layouts/Layout.astro';
 import { getLangFromUrl, useTranslations } from '@/i18n/utils';
 import { getRelativeLocaleUrl } from 'astro:i18n';
+import fulltimeBannerZh from '@/assets/banner/fulltime-banner.jpg';
+import fulltimeBannerEn from '@/assets/banner/en/fulltime-banner-en.jpg';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 const brand = lang === 'en' ? 'Patio Academy' : '攀梯国际';
+const heroBanner = lang === 'en' ? fulltimeBannerEn.src : fulltimeBannerZh.src;
+const heroAlt = t('fulltime.hero.title');
 
 const audience = t('home.fulltime.audience.items').split('｜');
 const advantages = t('fulltime.features.items').split('｜');
@@ -15,11 +19,10 @@ const support = t('fulltime.support.items').split('｜');
 ---
 
 <Layout title={`${t('nav.fulltime')} - ${brand}`}>
-  <section class="bg-base-200 py-20 md:py-28">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6" style="animation: slideInFromLeft 0.6s ease-out both">
-      <h1 class="text-4xl sm:text-5xl font-bold">{t('fulltime.hero.title')}</h1>
-      <p class="text-lg sm:text-xl opacity-80 leading-relaxed">{t('fulltime.hero.subtitle')}</p>
-    </div>
+  <section class="relative">
+    <figure class="w-full">
+      <img src={heroBanner} alt={heroAlt} class="w-full h-auto" loading="eager" />
+    </figure>
   </section>
 
   <section class="py-20 md:py-28">

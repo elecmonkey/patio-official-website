@@ -6,7 +6,8 @@ import CompanyCarousel from '@/components/CompanyCarousel';
 import picCompany1 from '@/assets/company/pic1.jpg';
 import picCompany2 from '@/assets/company/pic2.jpg';
 import picCompany3 from '@/assets/company/pic3.jpg';
-import worldMapGrid from '@/assets/world_map_grid.svg';
+import homeBannerZh from '@/assets/banner/home-banner.jpg';
+import homeBannerEn from '@/assets/banner/en/home-banner-en.jpg';
 import iconOrcid from '@/assets/academicons/academicons-orcid.svg';
 import iconMendeley from '@/assets/academicons/academicons-mendeley.svg';
 import iconOpenData from '@/assets/academicons/academicons-open-data.svg';
@@ -21,6 +22,8 @@ import iconArxiv from '@/assets/academicons/academicons-arxiv.svg';
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 const brand = lang === 'en' ? 'Patio Academy' : '攀梯国际';
+const heroBanner = lang === 'en' ? homeBannerEn.src : homeBannerZh.src;
+const heroAlt = t('home.hero.title');
 
 const featureIconMap = {
   mentors: iconOrcid.src,
@@ -129,29 +132,27 @@ const fallbackImage = companyGallery[0];
 ---
 
 <Layout title={`${t('nav.home')} - ${brand}`}>
-  <section class="hero relative min-h-[60vh] bg-base-200 overflow-hidden">
-    <div class="absolute inset-0">
-      <img src={worldMapGrid.src} alt="" class="w-full h-full object-cover mix-blend-multiply" style="filter: grayscale(100%) contrast(115%);" />
-      <div class="absolute inset-0 bg-gradient-to-b from-base-100/60 via-base-200/80 to-base-200"></div>
-    </div>
-    <div class="relative hero-content text-center py-24">
-      <div class="max-w-6xl mx-auto space-y-8 px-4">
-        <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight tracking-tight space-y-2" style="animation: slideInFromLeft 0.6s ease-out">
-          <span class="block">{t('home.hero.title')}</span>
-          <span class="block text-primary">{t('home.hero.titleHighlight')}</span>
-        </h1>
-        <p class="text-lg sm:text-xl leading-relaxed opacity-80" style="animation: slideInFromLeft 0.6s ease-out 0.2s both">
-          {t('home.hero.subtitle')}
-        </p>
-        <div class="flex flex-col sm:flex-row justify-center gap-4" style="animation: slideInFromLeft 0.6s ease-out 0.3s both">
-          <a href={getRelativeLocaleUrl(lang, 'contact')} class="btn btn-primary btn-lg">
+  <section class="relative bg-base-200">
+    <figure class="w-full">
+      <img src={heroBanner} alt={heroAlt} class="w-full h-auto" loading="eager" />
+      <div class="hidden sm:flex absolute bottom-6 lg:bottom-18 xl:bottom-26 left-8 lg:left-24 xl:left-50 px-6" style="animation: slideInFromLeft 0.6s ease-out 0.2s both">
+        <div class="flex flex-row items-center gap-4">
+          <a href={getRelativeLocaleUrl(lang, 'contact')} class="btn btn-accent btn-lg">
             {t('home.hero.primaryCta')}
           </a>
-          <a href={getRelativeLocaleUrl(lang, 'international-subjects')} class="btn btn-outline btn-lg">
+          <a href={getRelativeLocaleUrl(lang, 'international-subjects')} class="btn btn-info btn-lg">
             {t('home.hero.secondaryCta')}
           </a>
         </div>
       </div>
+    </figure>
+    <div class="bg-base-200 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mt-6 flex flex-col sm:hidden justify-center gap-4" style="animation: slideInFromLeft 0.6s ease-out 0.2s both">
+      <a href={getRelativeLocaleUrl(lang, 'contact')} class="btn btn-accent btn-lg">
+        {t('home.hero.primaryCta')}
+      </a>
+      <a href={getRelativeLocaleUrl(lang, 'international-subjects')} class="btn btn-outline btn-info btn-lg">
+        {t('home.hero.secondaryCta')}
+      </a>
     </div>
   </section>
 
@@ -204,7 +205,7 @@ const fallbackImage = companyGallery[0];
             <div class="card-body gap-3">
               {item.iconSrc && (
                 <div class="w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center">
-                  <img src={item.iconSrc} alt={item.title} class="w-6 h-6 object-contain" loading="lazy" />
+                  <img src={item.iconSrc} alt={item.title} class="w-6 h-6 object-contain logo-white" loading="lazy" />
                 </div>
               )}
               <h4 class="text-lg font-semibold">{item.title}</h4>
@@ -229,7 +230,7 @@ const fallbackImage = companyGallery[0];
               <div class="flex items-start gap-3">
                 {category.iconSrc && (
                   <div class="w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center flex-shrink-0">
-                    <img src={category.iconSrc} alt={category.title} class="w-6 h-6 object-contain" loading="lazy" />
+                    <img src={category.iconSrc} alt={category.title} class="w-6 h-6 object-contain logo-white" loading="lazy" />
                   </div>
                 )}
                 <div class="space-y-2">
