@@ -25,7 +25,7 @@ const hasExtra = Astro.slots.has('extra');
   >
     <div class="p-6 sm:p-8 space-y-4">
       <div class={`flex items-start gap-3 ${hasExtra ? 'justify-between' : 'justify-center'}`}>
-        <h3 class={`text-lg sm:text-xl font-semibold leading-tight text-base-content/90 ${hasExtra ? '' : 'text-center'}`}>{title}</h3>
+        <h3 class={`text-lg sm:text-xl font-semibold leading-tight ${accent ? 'text-primary' : 'text-base-content/90'} ${hasExtra ? '' : 'text-center'}`}>{title}</h3>
         {hasExtra ? <slot name="extra" /> : null}
       </div>
       {description ? <p class="text-sm sm:text-base opacity-80 leading-relaxed">{description}</p> : null}

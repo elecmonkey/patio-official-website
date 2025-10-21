@@ -61,7 +61,7 @@ export default function LanguageSwitcher({ currentLang, currentPath }: LanguageS
         </svg>
         <span className="hidden sm:inline">{languages[currentLang]}</span>
       </summary>
-      <ul className="dropdown-content menu bg-base-100 w-32 p-2 shadow border border-base-300 mt-2">
+      <ul className="dropdown-content menu bg-blue-900 text-white w-32 p-2 shadow border border-blue-800 mt-2">
         {Object.entries(languages).map(([code, name]) => {
           const typedCode = code as keyof typeof languages;
           return (
@@ -69,7 +69,9 @@ export default function LanguageSwitcher({ currentLang, currentPath }: LanguageS
               <a
                 href={targets[typedCode]}
                 onClick={(event) => handleLanguageChange(event, typedCode)}
-                className={currentLang === typedCode ? 'menu-active' : ''}
+                className={`${
+                  currentLang === typedCode ? 'bg-white text-blue-900 font-semibold' : 'text-white hover:bg-blue-800'
+                }`}
               >
                 {name}
               </a>

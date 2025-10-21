@@ -166,7 +166,7 @@ const fallbackImage = companyGallery[0];
         {curriculumPrograms.map((program, index) => (
           <div class="card card-border bg-base-100 h-full" style={`animation: slideInFromLeft 0.6s ease-out ${0.1 * index}s both`}>
             <div class="card-body space-y-4">
-              <div class="badge badge-ghost uppercase tracking-wide w-fit">{program.code}</div>
+              <div class="badge badge-ghost border border-blue-200 text-blue-900 uppercase tracking-wide w-fit">{program.code}</div>
               <h3 class="text-xl font-semibold leading-tight">{program.title}</h3>
               <p class="text-sm opacity-80 leading-relaxed" style="display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden;">{program.summary}</p>
             </div>
@@ -205,7 +205,7 @@ const fallbackImage = companyGallery[0];
             <div class="card-body gap-3">
               {item.iconSrc && (
                 <div class="w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center">
-                  <img src={item.iconSrc} alt={item.title} class="w-6 h-6 object-contain logo-white" loading="lazy" />
+                  <img src={item.iconSrc} alt={item.title} class="w-6 h-6 object-contain" loading="lazy" />
                 </div>
               )}
               <h4 class="text-lg font-semibold">{item.title}</h4>
@@ -230,7 +230,7 @@ const fallbackImage = companyGallery[0];
               <div class="flex items-start gap-3">
                 {category.iconSrc && (
                   <div class="w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center flex-shrink-0">
-                    <img src={category.iconSrc} alt={category.title} class="w-6 h-6 object-contain logo-white" loading="lazy" />
+                    <img src={category.iconSrc} alt={category.title} class="w-6 h-6 object-contain" loading="lazy" />
                   </div>
                 )}
                 <div class="space-y-2">
@@ -292,7 +292,7 @@ const fallbackImage = companyGallery[0];
       <p class="text-lg opacity-80 leading-relaxed">{t('home.about.subtitle')}</p>
       <div class="flex flex-col sm:flex-row justify-center gap-4 text-base font-medium">
         {trustPoints.map((point) => (
-          <span class="badge badge-ghost px-4 py-3 text-sm sm:text-base">{point}</span>
+          <span class="badge badge-ghost border border-blue-200 text-blue-900 px-4 py-3 text-sm sm:text-base">{point}</span>
         ))}
       </div>
       <div class="mt-10" style="animation: slideInFromLeft 0.6s ease-out 0.1s both">
@@ -307,15 +307,15 @@ const fallbackImage = companyGallery[0];
     </div>
   </section>
 
-  <section class="bg-primary text-primary-content py-20 md:py-24">
+  <section class="bg-blue-900 text-white py-20 md:py-24">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
       <h2 class="text-3xl sm:text-4xl font-bold">{t('home.cta.title')}</h2>
       <p class="text-lg opacity-90">{t('home.cta.subtitle')}</p>
       <div class="flex flex-col sm:flex-row justify-center gap-4">
-        <a href={getRelativeLocaleUrl(lang, 'contact')} class="btn btn-neutral btn-lg">
+        <a href={getRelativeLocaleUrl(lang, 'contact')} class="btn btn-lg bg-white text-blue-900 border-none hover:bg-blue-100">
           {t('home.cta.primary')}
         </a>
-        <a href="tel:18061256544" class="btn btn-outline btn-lg text-primary-content border-primary-content/40 hover:bg-primary-content hover:text-primary">
+        <a href="tel:18061256544" class="btn btn-outline btn-lg text-white border-white hover:bg-white hover:text-blue-900">
           {t('home.cta.secondary')}
         </a>
       </div>
