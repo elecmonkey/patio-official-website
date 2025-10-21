@@ -3,7 +3,7 @@ import Layout from '@/layouts/Layout.astro';
 import { getLangFromUrl, useTranslations } from '@/i18n/utils';
 import { getRelativeLocaleUrl } from 'astro:i18n';
 import fulltimeBannerZh from '@/assets/banner/fulltime-banner.jpg';
-import fulltimeBannerEn from '@/assets/banner/en/fulltime-banner-en.jpg';
+import fulltimeBannerEn from '@/assets/banner/fulltime-banner.jpg';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);

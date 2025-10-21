@@ -58,7 +58,7 @@ export default function CompanyCarousel({ images, autoPlayInterval = DEFAULT_INT
             onClick={() => goToSlide(activeIndex - 1)}
             aria-label="Previous slide"
           >
-            <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="square" strokeLinejoin="miter" strokeWidth="2" d="M15 18l-6-6 6-6"></path>
             </svg>
           </button>
@@ -69,7 +69,7 @@ export default function CompanyCarousel({ images, autoPlayInterval = DEFAULT_INT
             onClick={() => goToSlide(activeIndex + 1)}
             aria-label="Next slide"
           >
-            <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="square" strokeLinejoin="miter" strokeWidth="2" d="M9 6l6 6-6 6"></path>
             </svg>
           </button>

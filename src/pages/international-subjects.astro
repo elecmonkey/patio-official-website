@@ -7,10 +7,14 @@ import imgAlevel from '@/assets/course/alevel.jpg';
 import imgAp from '@/assets/course/ap.jpg';
 import imgIb from '@/assets/course/ib.jpg';
 import imgWace from '@/assets/course/wace.jpg';
+import subjectsBannerZh from '@/assets/banner/subjects-banner.jpg';
+import subjectsBannerEn from '@/assets/banner/subjects-banner.jpg';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 const brand = lang === 'en' ? 'Patio Academy' : '攀梯国际';
+const heroBanner = lang === 'en' ? subjectsBannerEn.src : subjectsBannerZh.src;
+const heroAlt = t('curriculum.hero.title');
 
 const curriculumDetails = [
   {
@@ -48,11 +52,10 @@ const supportItems = t('curriculum.support.items').split('｜');
 ---
 
 <Layout title={`${t('nav.curriculum')} - ${brand}`}>
-  <section class="bg-base-200 py-20 md:py-28">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6" style="animation: slideInFromLeft 0.6s ease-out both">
-      <h1 class="text-4xl sm:text-5xl font-bold leading-tight">{t('curriculum.hero.title')}</h1>
-      <p class="text-lg sm:text-xl opacity-80 leading-relaxed">{t('curriculum.hero.subtitle')}</p>
-    </div>
+  <section class="relative">
+    <figure class="w-full">
+      <img src={heroBanner} alt={heroAlt} class="w-full h-auto" loading="eager" />
+    </figure>
   </section>
 
   <section class="py-20 md:py-28">
@@ -66,6 +69,7 @@ const supportItems = t('curriculum.support.items').split('｜');
           <StackedCard
             title={item.code}
             description={item.description}
+            accent
             style={`animation: slideInFromLeft 0.6s ease-out ${0.1 * index}s both`}
           >
             <img
@@ -75,14 +79,11 @@ const supportItems = t('curriculum.support.items').split('｜');
               class="w-full rounded-lg border border-base-300/80 shadow-sm mb-4"
             />
             <p class="text-sm opacity-80 leading-relaxed">{item.structure}</p>
-            <ul class="space-y-2 text-sm opacity-80 leading-relaxed">
+            <div class="flex flex-wrap gap-2 text-sm">
               {item.highlights.map((highlight) => (
-                <li class="flex items-start gap-2">
-                  <span class="text-primary mt-1">•</span>
-                  <span>{highlight}</span>
-                </li>
+                <span class="inline-flex items-center rounded-md border border-primary/30 bg-primary/5 px-3 py-2 text-white">{highlight}</span>
               ))}
-            </ul>
+            </div>
             <div class="mt-4 h-1 w-0 bg-primary transition-all duration-300 group-hover:w-full"></div>
           </StackedCard>
         ))}

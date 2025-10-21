@@ -3,7 +3,7 @@ import Layout from '@/layouts/Layout.astro';
 import { getLangFromUrl, useTranslations } from '@/i18n/utils';
 import { getRelativeLocaleUrl } from 'astro:i18n';
 import oxbridgeBannerZh from '@/assets/banner/oxbridge-banner.jpg';
-import oxbridgeBannerEn from '@/assets/banner/en/oxbridge-banner-en.jpg';
+import oxbridgeBannerEn from '@/assets/banner/oxbridge-banner.jpg';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);

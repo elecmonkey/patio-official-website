@@ -5,10 +5,14 @@ import wechatQR from '@/assets/wechat-qrcode.jpg';
 import xhsQR from '@/assets/xhs-qrcode.jpg';
 import wechatLogo from '@/assets/out/wechat-logo.svg';
 import xhsLogo from '@/assets/out/xhs-logo.svg';
+import contactBannerZh from '@/assets/banner/contact-banner.jpg';
+import contactBannerEn from '@/assets/banner/contact-banner.jpg';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 const brand = lang === 'en' ? 'Patio Academy' : '攀梯国际';
+const heroBanner = lang === 'en' ? contactBannerEn.src : contactBannerZh.src;
+const heroAlt = t('contact.hero.title');
 
 const contactMethods = [
   {
@@ -34,11 +38,10 @@ const contactMethods = [
 ---
 
 <Layout title={`${t('nav.cta')} - ${brand}`}>
-  <section class="bg-base-200 py-20 md:py-28">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6" style="animation: slideInFromLeft 0.6s ease-out both">
-      <h1 class="text-4xl sm:text-5xl font-bold">{t('contact.hero.title')}</h1>
-      <p class="text-lg sm:text-xl opacity-80 leading-relaxed">{t('contact.hero.subtitle')}</p>
-    </div>
+  <section class="relative">
+    <figure class="w-full">
+      <img src={heroBanner} alt={heroAlt} class="w-full h-auto" loading="eager" />
+    </figure>
   </section>
 
   <section class="py-20 md:py-28">

@@ -10,11 +10,15 @@ import iconElsevier from '@/assets/academicons/academicons-elsevier.svg';
 import iconINaturalist from '@/assets/academicons/academicons-inaturalist.svg';
 import iconJstor from '@/assets/academicons/academicons-jstor.svg';
 import iconClarivate from '@/assets/academicons/academicons-clarivate.svg';
+import aboutBannerZh from '@/assets/banner/about-banner.jpg';
+import aboutBannerEn from '@/assets/banner/about-banner.jpg';
 import { getLangFromUrl, useTranslations } from '@/i18n/utils';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 const brand = lang === 'en' ? 'Patio Academy' : '攀梯国际';
+const heroBanner = lang === 'en' ? aboutBannerEn.src : aboutBannerZh.src;
+const heroAlt = t('about.hero.title');
 
 const storyPoints = t('about.story.points').split('｜');
 const metrics = t('about.metrics.items').split('｜');
@@ -87,13 +91,10 @@ const fallbackImage = companyGallery[0];
 ---
 
 <Layout title={`${t('nav.about')} - ${brand}`}>
-  <section class="bg-base-200 py-20 md:py-32">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6" style="animation: slideInFromLeft 0.6s ease-out both">
-      <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold">{t('about.hero.title')}</h1>
-      <p class="text-lg sm:text-xl opacity-80 leading-relaxed max-w-3xl mx-auto">
-        {t('about.hero.subtitle')}
-      </p>
-    </div>
+  <section class="relative">
+    <figure class="w-full">
+      <img src={heroBanner} alt={heroAlt} class="w-full h-auto" loading="eager" />
+    </figure>
   </section>
 
   <section class="py-16 md:py-24 bg-base-100">
@@ -161,20 +162,20 @@ const fallbackImage = companyGallery[0];
             <div class="card-body gap-4">
               <div class="w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center">
                 {value.icon === 'mentors' ? (
-                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg class="w-6 h-6 logo-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="1.8" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
                   </svg>
                 ) : value.icon === 'personalized' ? (
-                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg class="w-6 h-6 logo-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="1.8" d="M12 6v6l4 2M5 12a7 7 0 0114 0 7 7 0 01-7 7H7l-2 3"></path>
                   </svg>
                 ) : value.icon === 'feedback' ? (
-                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg class="w-6 h-6 logo-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="1.8" d="M21 12a9 9 0 11-5.62-8.32l-.38 2.14A7 7 0 1019 12h2z"></path>
                     <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="1.8" d="M13 12l-2 2-1-1"></path>
                   </svg>
                 ) : (
-                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg class="w-6 h-6 logo-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="1.8" d="M4 7h16M4 12h16M4 17h10"></path>
                   </svg>
                 )}

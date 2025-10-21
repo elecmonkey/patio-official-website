@@ -2,10 +2,14 @@
 import Layout from '@/layouts/Layout.astro';
 import { getLangFromUrl, useTranslations } from '@/i18n/utils';
 import { getRelativeLocaleUrl } from 'astro:i18n';
+import oxbridgeBannerZh from '@/assets/banner/oxbridge-banner.jpg';
+import oxbridgeBannerEn from '@/assets/banner/oxbridge-banner.jpg';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 const brand = lang === 'en' ? 'Patio Academy' : '攀梯国际';
+const heroBanner = lang === 'en' ? oxbridgeBannerEn.src : oxbridgeBannerZh.src;
+const heroAlt = t('oxbridge.hero.title');
 
 const painPoints = t('home.oxbridge.pains.items').split('｜');
 const services = t('oxbridge.services.items').split('｜');
@@ -65,11 +69,10 @@ const g5Universities = [
 ---
 
 <Layout title={`${t('nav.oxbridge')} - ${brand}`}>
-  <section class="bg-base-200 py-20 md:py-28">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6" style="animation: slideInFromLeft 0.6s ease-out both">
-      <h1 class="text-4xl sm:text-5xl font-bold">{t('oxbridge.hero.title')}</h1>
-      <p class="text-lg sm:text-xl opacity-80 leading-relaxed">{t('oxbridge.hero.subtitle')}</p>
-    </div>
+  <section class="relative">
+    <figure class="w-full">
+      <img src={heroBanner} alt={heroAlt} class="w-full h-auto" loading="eager" />
+    </figure>
   </section>
 
   <section class="py-20 md:py-28">
