@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import wechatQR from '@/assets/wechat-qrcode.jpg';
-import wechatLogo from '@/assets/out/wechat-logo.svg';
+import wechatLogo from '@/assets/out/wechat.svg';
 
 type Lang = 'zh-cn' | 'en';
 type ActionType = 'back' | 'wechat' | 'phone';
@@ -159,7 +159,7 @@ export default function FloatingActions({ lang, textsByLang }: FloatingActionsPr
             aria-expanded={active === 'wechat'}
             aria-label={texts.wechatLabel}
           >
-            <img src={wechatLogo.src} alt="WeChat" className="w-6 h-6" />
+            <img src={wechatLogo.src} alt="WeChat" className="w-6 h-6 logo-white" />
           </button>
           {active === 'wechat' && (
             <div className="floating-tooltip">
