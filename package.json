@@ -7,20 +7,18 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "prepare": "husky",
-    "deploy": "astro build && wrangler pages deploy dist"
+    "prepare": "husky"
   },
   "devDependencies": {
-    "daisyui": "^5.3.7",
+    "@astrojs/react": "^4.4.2",
+    "@tailwindcss/vite": "^4.1.17",
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
+    "astro": "^5.16.4",
+    "daisyui": "^5.5.8",
     "husky": "^9.1.7",
-    "wrangler": "^4.43.0",
-    "tailwindcss": "^4.1.14",
-    "@astrojs/react": "^4.4.0",
-    "@tailwindcss/vite": "^4.1.14",
-    "@types/react": "^19.2.2",
-    "@types/react-dom": "^19.2.2",
-    "astro": "^5.14.5",
-    "react": "^19.2.0",
-    "react-dom": "^19.2.0"
+    "react": "^19.2.1",
+    "react-dom": "^19.2.1",
+    "tailwindcss": "^4.1.17"
   }
 }
